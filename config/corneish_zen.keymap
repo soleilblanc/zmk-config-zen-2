@@ -50,6 +50,44 @@
         };
     };
 
+    combos {
+        compatible = "zmk,combos";
+
+        C_ZX {
+            bindings = <&kp LG(K)>;
+            key-positions = <25 26>;
+        };
+
+        C_XC {
+            bindings = <&kp LA(LG(C))>;
+            key-positions = <26 27>;
+        };
+
+        C_CV {
+            bindings = <&kp LA(LG(V))>;
+            key-positions = <27 28>;
+        };
+
+        C_XV {
+            bindings = <&kp LS(LA(LG(V)))>;
+            key-positions = <26 28>;
+        };
+
+        C_FG {
+            bindings = <&M_DPAR>;
+            key-positions = <16 17>;
+        };
+    };
+
+    macros {
+        M_DPAR: M_DPAR {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LPAR &kp RPAR &kp LEFT>;
+            label = "M_DPAR";
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -80,10 +118,10 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&trans  &kp PG_UP  &kp HOME  &kp UP    &kp END    &kp PRCNT    &kp CARET     &kp N7        &kp N8        &kp N9       &kp N0                 &kp BSPC
-&trans  &kp PG_DN  &kp LEFT  &kp DOWN  &kp RIGHT  &kp RET      &kp KP_PLUS   &mt RSHFT N4  &mt RGUI N5   &mt RALT N6  &mt RCTRL KP_ASTERISK  &kp KP_EQUAL
-&trans  &sk LCTRL  &sk LALT  &sk LGUI  &sk LSHFT  &kp TILDE    &kp KP_MINUS  &kp N1        &kp N2        &kp N3       &kp KP_SLASH           &trans
-                             &trans    &trans     &trans       &trans        &kp KP_DOT    &kp KP_COMMA
+&trans  &kp PG_UP  &kp HOME           &mt LG(UP) UP      &kp END              &kp PRCNT    &kp CARET     &kp N7        &kp N8        &kp N9       &kp N0                 &kp BSPC
+&trans  &kp PG_DN  &mt LG(LEFT) LEFT  &mt LG(DOWN) DOWN  &mt LG(RIGHT) RIGHT  &kp RET      &kp KP_PLUS   &mt RSHFT N4  &mt RGUI N5   &mt RALT N6  &mt RCTRL KP_ASTERISK  &kp KP_EQUAL
+&trans  &sk LCTRL  &sk LALT           &sk LGUI           &sk LSHFT            &kp TILDE    &kp KP_MINUS  &kp N1        &kp N2        &kp N3       &kp KP_SLASH           &trans
+                                      &trans             &trans               &trans       &trans        &kp KP_DOT    &kp KP_COMMA
             >;
         };
 
@@ -97,10 +135,10 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&trans  &kp EXCL   &kp AT    &kp HASH  &kp DLLR  &kp PRCNT    &none      &kp HOME  &kp UP    &kp END    &kp PG_UP  &none
-&trans  &kp CARET  &kp AMPS  &kp STAR  &kp LPAR  &kp RPAR     &none      &kp LEFT  &kp DOWN  &kp RIGHT  &kp PG_DN  &none
-&trans  &none      &none     &none     &kp LBRC  &kp RBRC     &kp UNDER  &none     &none     &none      &none      &none
-                             &kp LBKT  &kp RBKT  &kp SPACE    &kp RET    &trans    &trans
+&trans  &kp EXCL         &kp AT         &kp HASH       &kp DLLR        &kp PRCNT    &none      &kp HOME           &mt LG(UP) UP      &kp END              &kp PG_UP  &none
+&trans  &mt LCTRL CARET  &mt LALT AMPS  &mt LGUI STAR  &mt LSHFT LPAR  &kp RPAR     &none      &mt LG(LEFT) LEFT  &mt LG(DOWN) DOWN  &mt LG(RIGHT) RIGHT  &kp PG_DN  &none
+&trans  &none            &none          &none          &kp LBRC        &kp RBRC     &kp UNDER  &none              &none              &none                &none      &none
+                                        &kp LBKT       &kp RBKT        &kp SPACE    &kp RET    &trans             &trans
             >;
         };
 
@@ -109,7 +147,7 @@
             bindings = <
 &kp LS(LA(LC(LG(TAB))))    &kp LS(LA(LC(LG(N1))))  &kp LS(LA(LC(LG(N2))))  &kp LS(LA(LC(LG(N3))))  &none    &kp LS(LG(T))    &none   &kp F7   &kp F8  &kp F9  &kp F12  &none
 &kp LS(LA(LC(LG(GRAVE))))  &kp LS(LA(LC(LG(A))))   &kp LS(LA(LC(LG(S))))   &none                   &none    &kp LG(H)        &none   &kp F4   &kp F5  &kp F6  &kp F11  &none
-&mo 4                      &kp LS(LC(LA(LG(Z))))   &none                   &none                   &none    &none            &none   &kp F1   &kp F2  &kp F3  &kp F10  &mo 4
+&mo 4                      &kp LS(LC(LA(LG(Z))))   &none                   &none                   &none    &kp LA(LG(H))    &none   &kp F1   &kp F2  &kp F3  &kp F10  &mo 4
                                                                            &none                   &kp INS  &trans           &trans  &kp INS  &none
             >;
         };
