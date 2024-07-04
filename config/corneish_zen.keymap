@@ -48,6 +48,34 @@
             #binding-cells = <0>;
             bindings = <&kp RCTRL>, <&kp INS>;
         };
+
+        td_up: td_up {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_UP";
+            #binding-cells = <0>;
+            bindings = <&mt LG(UP) UP>, <&kp UP>;
+        };
+
+        td_left: td_left {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_LEFT";
+            #binding-cells = <0>;
+            bindings = <&mt LG(LEFT) LEFT>, <&kp LEFT>;
+        };
+
+        td_down: td_down {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_DOWN";
+            #binding-cells = <0>;
+            bindings = <&mt LG(DOWN) DOWN>, <&kp DOWN>;
+        };
+
+        td_right: td_right {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_RIGHT";
+            #binding-cells = <0>;
+            bindings = <&mt LG(RIGHT) RIGHT>, <&kp RIGHT>;
+        };
     };
 
     combos {
@@ -77,6 +105,11 @@
             bindings = <&M_DPAR>;
             key-positions = <16 17>;
         };
+
+        C_VB {
+            bindings = <&M_DBKT>;
+            key-positions = <28 29>;
+        };
     };
 
     macros {
@@ -85,6 +118,13 @@
             #binding-cells = <0>;
             bindings = <&kp LPAR &kp RPAR &kp LEFT>;
             label = "M_DPAR";
+        };
+
+        M_DBKT: M_dp {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LBKT &kp RBKT &kp LEFT>;
+            label = "M_DP";
         };
     };
 
@@ -109,10 +149,10 @@
             //                      └──────┴──────┴──────┘   └──────┴──────┴──────┘
 
             bindings = <
-            &kp TAB         &kp Q  &kp W  &kp E         &kp R       &kp T     &kp Y        &kp U      &kp I      &kp O    &kp P     &kp BSLH
-            &mt LALT GRAVE  &kp A  &kp S  &kp D         &kp F       &kp G     &kp H        &kp J      &kp K      &kp L    &kp SQT   &kp SEMI
-            &td_cap         &kp Z  &kp X  &kp C         &kp V       &kp B     &kp N        &kp M      &kp COMMA  &kp DOT  &kp FSLH  &td_fn
-                                          &mt LGUI ESC  &lt 1 BSPC  &td_sp    &lt 3 ENTER  &lt 2 DEL  &td_cw
+&kp TAB         &kp Q  &kp W  &kp E         &kp R       &kp T     &kp Y        &kp U      &kp I      &kp O    &kp P     &kp BSLH
+&mt LALT GRAVE  &kp A  &kp S  &kp D         &kp F       &kp G     &kp H        &kp J      &kp K      &kp L    &kp SQT   &kp SEMI
+&td_cap         &kp Z  &kp X  &kp C         &kp V       &kp B     &kp N        &kp M      &kp COMMA  &kp DOT  &kp FSLH  &td_fn
+                              &mt LGUI ESC  &lt 1 BSPC  &td_sp    &lt 3 ENTER  &lt 2 DEL  &td_cw
             >;
         };
 
@@ -126,10 +166,10 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&trans  &kp PG_UP  &kp HOME           &mt LG(UP) UP      &kp END              &kp PRCNT    &kp CARET     &kp N7        &kp N8        &kp N9       &kp N0                 &kp BSPC
-&trans  &kp PG_DN  &mt LG(LEFT) LEFT  &mt LG(DOWN) DOWN  &mt LG(RIGHT) RIGHT  &kp RET      &kp KP_PLUS   &mt RSHFT N4  &mt RGUI N5   &mt RALT N6  &mt RCTRL KP_ASTERISK  &kp KP_EQUAL
-&trans  &sk LCTRL  &sk LALT           &sk LGUI           &sk LSHFT            &kp TILDE    &kp KP_MINUS  &kp N1        &kp N2        &kp N3       &kp KP_SLASH           &trans
-                                      &trans             &trans               &trans       &trans        &kp KP_DOT    &kp KP_COMMA
+&trans     &kp PG_UP  &kp HOME  &td_up    &kp END    &kp PRCNT    &kp CARET     &kp N7        &kp N8        &kp N9       &kp N0                 &kp BSPC
+&sk LALT   &kp PG_DN  &td_left  &td_down  &td_right  &kp RET      &kp KP_PLUS   &mt RSHFT N4  &mt RGUI N5   &mt RALT N6  &mt RCTRL KP_ASTERISK  &kp KP_EQUAL
+&sk LSHFT  &sk LCTRL  &none     &none     &kp DEL    &kp TILDE    &kp KP_MINUS  &kp N1        &kp N2        &kp N3       &kp KP_SLASH           &trans
+                                &trans    &trans     &trans       &trans        &kp KP_DOT    &kp KP_COMMA
             >;
         };
 
@@ -143,10 +183,10 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&trans  &kp EXCL         &kp AT         &kp HASH       &kp DLLR        &kp PRCNT    &none      &kp HOME           &mt LG(UP) UP      &kp END              &kp PG_UP  &none
-&trans  &mt LCTRL CARET  &mt LALT AMPS  &mt LGUI STAR  &mt LSHFT LPAR  &kp RPAR     &none      &mt LG(LEFT) LEFT  &mt LG(DOWN) DOWN  &mt LG(RIGHT) RIGHT  &kp PG_DN  &none
-&trans  &none            &none          &none          &kp LBRC        &kp RBRC     &kp UNDER  &none              &none              &none                &none      &none
-                                        &kp LBKT       &kp RBKT        &kp SPACE    &kp RET    &trans             &trans
+&trans  &kp EXCL         &kp AT         &kp HASH       &kp DLLR        &kp PRCNT    &none      &kp HOME  &td_up    &kp END    &kp PG_UP  &none
+&trans  &mt LCTRL CARET  &mt LALT AMPS  &mt LGUI STAR  &mt LSHFT LPAR  &kp RPAR     &none      &td_left  &td_down  &td_right  &kp PG_DN  &none
+&trans  &none            &none          &none          &kp LBRC        &kp RBRC     &kp UNDER  &none     &none     &none      &none      &none
+                                        &kp LBKT       &kp RBKT        &kp SPACE    &kp RET    &trans    &trans
             >;
         };
 
@@ -167,8 +207,6 @@
 &trans          &rgb_ug RGB_OFF    &rgb_ug RGB_ON    &none         &rgb_ug RGB_EFF  &rgb_ug RGB_EFR    &none         &rgb_ug RGB_SPD  &rgb_ug RGB_BRD  &rgb_ug RGB_SAD  &rgb_ug RGB_HUD  &trans
                                                      &none         &none            &none              &none         &none            &none
             >;
-
-            label = "SYS";
         };
     };
 };
