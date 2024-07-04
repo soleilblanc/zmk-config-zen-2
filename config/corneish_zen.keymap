@@ -27,6 +27,34 @@
             #binding-cells = <0>;
             bindings = <&kp LEFT_SHIFT>, <&kp CAPS>;
         };
+
+        td1: td1 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD1";
+            #binding-cells = <0>;
+            bindings = <&mt LEFT_SHIFT CAPS>, <&kp LA(LC(LG(LSHFT)))>;
+        };
+
+        td2: td2 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD2";
+            #binding-cells = <0>;
+            bindings = <&kp RCTRL>, <&kp INS>;
+        };
+
+        td_sp: td_sp {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_SP";
+            #binding-cells = <0>;
+            bindings = <&lt 3 SPACE>, <&kp SPACE>;
+        };
+
+        td_cw: td_cw {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_CW";
+            #binding-cells = <0>;
+            bindings = <&kp LEFT_SHIFT>, <&caps_word>;
+        };
     };
 
     keymap {
@@ -42,10 +70,10 @@
             //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
 
             bindings = <
-&kp TAB    &kp Q  &kp W  &kp E     &kp R  &kp T          &kp Y        &kp U  &kp I      &kp O    &kp P     &kp BSPC
-&kp LCTRL  &kp A  &kp S  &kp D     &kp F  &kp G          &kp H        &kp J  &kp K      &kp L    &kp SEMI  &kp SQT
-&td0       &kp Z  &kp X  &kp C     &kp V  &kp B          &kp N        &kp M  &kp COMMA  &kp DOT  &kp FSLH  &kp ESC
-                         &kp LGUI  &mo 1  &lt 3 SPACE    &lt 3 ENTER  &mo 2  &kp RALT
+&kp TAB         &kp Q  &kp W  &kp E         &kp R       &kp T     &kp Y      &kp U      &kp I      &kp O    &kp P     &kp BSLH
+&mt LALT GRAVE  &kp A  &kp S  &kp D         &kp F       &kp G     &kp H      &kp J      &kp K      &kp L    &kp SQT   &kp SEMI
+&td1            &kp Z  &kp X  &kp C         &kp V       &kp B     &kp N      &kp M      &kp COMMA  &kp DOT  &kp FSLH  &td2
+                              &mt LGUI ESC  &lt 1 BSPC  &td_sp    &lt 3 RET  &lt 2 DEL  &td_cw
             >;
         };
 
@@ -59,10 +87,10 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&trans  &kp N1           &kp N2          &kp N3             &kp N4            &kp N5             &kp N6           &kp N7           &kp N8           &kp N9           &kp N0    &kp BSPC
-&trans  &bt BT_CLR_ALL   &bt BT_SEL 0    &bt BT_SEL 1       &bt BT_SEL 2      &bt BT_SEL 3       &kp LEFT         &kp DOWN         &kp UP           &kp RIGHT        &kp HOME  &kp PG_UP
-&trans  &rgb_ug RGB_OFF  &rgb_ug RGB_ON  &ext_power EP_OFF  &ext_power EP_ON  &rgb_ug RGB_EFF    &rgb_ug RGB_EFR  &rgb_ug RGB_SPI  &rgb_ug RGB_BRI  &rgb_ug RGB_BRD  &kp END   &kp PG_DN
-                                         &trans             &trans            &trans             &kp INS          &kp DEL          &trans
+&trans  &kp N1     &kp N2    &kp N3    &kp N4     &kp N5     &kp N6   &kp N7    &kp N8         &kp N9     &kp N0     &kp MINUS
+&trans  &kp LEFT   &kp UP    &kp DOWN  &kp RIGHT  &kp RET    &none    &kp LEFT  &kp DOWN       &kp UP     &kp RIGHT  &kp EQUAL
+&trans  &sk LCTRL  &sk LALT  &sk LGUI  &sk LSHFT  &none      &none    &kp HOME  &kp PAGE_DOWN  &kp PG_UP  &kp END    &trans
+                             &trans    &trans     &trans     &kp INS  &trans    &trans
             >;
         };
 
@@ -76,20 +104,30 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&trans  &kp EXCL      &kp AT        &kp HASH  &kp DLLR  &kp PRCNT    &kp CARET  &kp AMPS   &kp ASTRK  &kp LPAR  &kp RPAR  &kp BSPC
-&trans  &none         &none         &none     &none     &none        &kp MINUS  &kp EQUAL  &kp LBKT   &kp RBKT  &kp BSLH  &kp GRAVE
-&trans  &out OUT_USB  &out OUT_BLE  &none     &none     &none        &kp UNDER  &kp PLUS   &kp LBRC   &kp RBRC  &kp PIPE  &kp TILDE
-                                    &trans    &trans    &kp SPACE    &kp RET    &trans     &trans
+&trans  &kp EXCL  &kp AT  &kp HASH  &kp DLLR  &kp PRCNT    &kp CARET  &kp AMPS   &kp ASTRK  &kp LPAR  &kp RPAR  &none
+&trans  &none     &none   &none     &none     &none        &kp MINUS  &kp EQUAL  &kp LBKT   &kp RBKT  &none     &none
+&trans  &none     &none   &none     &none     &none        &kp UNDER  &kp PLUS   &kp LBRC   &kp RBRC  &none     &trans
+                          &trans    &trans    &kp SPACE    &kp RET    &trans     &trans
             >;
         };
 
         layer_3 {
             display-name = "Fn";
             bindings = <
-&trans  &kp F1  &kp F2  &kp F3  &kp F4      &kp F5         &kp F6       &kp F7  &kp F8  &kp F9  &kp F10          &kp F11
-&trans  &trans  &trans  &trans  &sys_reset  &bootloader    &bootloader  &trans  &trans  &trans  &kp PRINTSCREEN  &kp F12
-&trans  &trans  &trans  &trans  &trans      &trans         &trans       &trans  &trans  &trans  &kp SCROLLLOCK   &kp PAUSE_BREAK
-                        &trans  &trans      &trans         &trans       &trans  &trans
+&none  &kp F1  &kp F2  &kp F3  &kp F4   &kp F5    &kp F6  &kp F7   &kp F8  &kp F9  &kp F10  &kp F11
+&none  &none   &none   &none   &none    &none     &none   &none    &none   &none   &none    &kp F12
+&mo 4  &none   &none   &none   &none    &none     &none   &none    &none   &none   &none    &mo 4
+                       &none   &kp INS  &trans    &trans  &kp INS  &none
+            >;
+        };
+
+        layer_4 {
+            display-name = "SYS";
+            bindings = <
+&bt BT_CLR      &bt BT_SEL 0       &bt BT_SEL 1      &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &out OUT_BLE     &out OUT_USB     &none            &none            &none  &none
+&bt BT_CLR_ALL  &ext_power EP_OFF  &ext_power EP_ON  &none         &sys_reset    &bootloader     &bootloader      &none            &rgb_ug RGB_BRD  &rgb_ug RGB_BRI  &none  &none
+&trans          &rgb_ug RGB_OFF    &rgb_ug RGB_ON    &none         &none         &none           &rgb_ug RGB_EFR  &rgb_ug RGB_EFF  &rgb_ug RGB_SPD  &rgb_ug RGB_SPI  &none  &trans
+                                                     &none         &none         &none           &none            &none            &none
             >;
         };
     };
