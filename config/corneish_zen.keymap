@@ -139,12 +139,12 @@
             // │      │      │      │      │      │      │   │      │      │      │      │      │      │
             // ├──────┼──────┼──────┼──────┼──────┼──────┤   ├──────┼──────┼──────┼──────┼──────┼──────┤
             // │ `    │ A    │ S    │ D    │ F    │ G    │   │ H    │ J    │ K    │ L    │ '    │ ;    │ 
-            // │ OPT  │      │      │      │      │      │   │      │      │      │      │      │      │
+            // │ ALT  │      │      │      │      │      │   │      │      │      │      │      │      │
             // ├──────┼──────┼──────┼──────┼──────┼──────┤   ├──────┼──────┼──────┼──────┼──────┼──────┤
             // │ CAPS │ Z    │ X    │ C    │ V    │ B    │   │ N    │ M    │ ,    │ .    │ /    │ FN   │
             // │ SHFT │      │      │      │      │      │   │      │      │      │      │      │ CTRL │
             // └──────┴──────┴──────┼──────┼──────┼──────┤   └──────┼──────┼──────┼──────┴──────┴──────┘
-            //                      │ ESC  │ BKSP │ SPC  │   │ ENT  │ DEL  │ C.W. │
+            //                      │ ESC  │ BKSP │ SPC  │   │ ENT  │ DEL  │ CAPW │
             //                      │ GUI  │ LWR  │ L3   │   │ L3   │ RSE  │ SHFT │
             //                      └──────┴──────┴──────┘   └──────┴──────┴──────┘
 
@@ -159,39 +159,70 @@
         lower_layer {
             display-name = "NUMBER";
 
-            // -----------------------------------------------------------------------------------------
-            // |  TAB |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BKSP |
-            // | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     |      |
-            // | SHFT |     |     |     |     |     |   |     |     |     |     |     |      |
-            //                    | GUI |     | SPC |   | ENT |     | ALT |
+            // ┌──────┬──────┬──────┬──────┬──────┬──────┐   ┌──────┬──────┬──────┬──────┬──────┬──────┐
+            // │ TAB  │ PGUP │ HOME │ UP   │ END  │ %    │   │ ^    │ 7    │ 8    │ 9    │ 0    │ BKSP │
+            // │      │      │      │      │      │      │   │      │      │      │      │      │      │
+            // ├──────┼──────┼──────┼──────┼──────┼──────┤   ├──────┼──────┼──────┼──────┼──────┼──────┤
+            // │      │ PGDN │ DOWN │ DOWN │ RGHT │ ENT  │   │ +    │ 4    │ 5    │ 6    │ *    │ =    │ 
+            // │ ALT  │      │      │      │      │      │   │      │ SHFT │ GUI  │ ALT  │ CTRL │      │
+            // ├──────┼──────┼──────┼──────┼──────┼──────┤   ├──────┼──────┼──────┼──────┼──────┼──────┤
+            // │      │      │      │      │ DEL  │ ~    │   │ -    │ 1    │ 2    │ 3    │ /    │ FN   │
+            // │ SHFT │ CTRL │      │      │      │      │   │      │      │      │      │      │ CTRL │
+            // └──────┴──────┴──────┼──────┼──────┼──────┤   └──────┼──────┼──────┼──────┴──────┴──────┘
+            //                      │ ESC  │      │ SPC  │   │ ENT  │ .    │ CAPW │
+            //                      │ GUI  │      │ L3   │   │ L3   │      │ SHFT │
+            //                      └──────┴──────┴──────┘   └──────┴──────┴──────┘
 
             bindings = <
 &trans     &kp PG_UP  &kp HOME  &td_up    &kp END    &kp PRCNT    &kp CARET     &kp N7        &kp N8        &kp N9       &kp N0                 &kp BSPC
 &sk LALT   &kp PG_DN  &td_left  &td_down  &td_right  &kp RET      &kp KP_PLUS   &mt RSHFT N4  &mt RGUI N5   &mt RALT N6  &mt RCTRL KP_ASTERISK  &kp KP_EQUAL
 &sk LSHFT  &sk LCTRL  &none     &none     &kp DEL    &kp TILDE    &kp KP_MINUS  &kp N1        &kp N2        &kp N3       &kp KP_SLASH           &trans
-                                &trans    &trans     &trans       &trans        &kp KP_DOT    &kp KP_COMMA
+                                &trans    &trans     &trans       &trans        &kp KP_DOT    &trans
             >;
         };
 
         raise_layer {
             display-name = "SYMBOL";
 
-            // -----------------------------------------------------------------------------------------
-            // |  TAB |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | BKSP |
-            // | CTRL |     |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
-            // | SHFT |     |     |     |     |     |   |  _  |  +  |  {  |  }  | "|" |  ~   |
-            //                    | GUI |     | SPC |   | ENT |     | ALT |
+            // ┌──────┬──────┬──────┬──────┬──────┬──────┐   ┌──────┬──────┬──────┬──────┬──────┬──────┐
+            // │ TAB  │ !    │ @    │ #    │ $    │ %    │   │      │ HOME │ UP   │ END  │ PGUP │      │
+            // │      │      │      │      │      │      │   │      │      │      │      │      │      │
+            // ├──────┼──────┼──────┼──────┼──────┼──────┤   ├──────┼──────┼──────┼──────┼──────┼──────┤
+            // │      │ ^    │ &    │ *    │ (    │ )    │   │      │ LEFT │ DOWN │ RGHT │ PGDN │      │ 
+            // │      │ CTRL │ ALT  │ GUI  │ SHFT │      │   │      │      │      │      │      │      │
+            // ├──────┼──────┼──────┼──────┼──────┼──────┤   ├──────┼──────┼──────┼──────┼──────┼──────┤
+            // │      │      │      │      │ {    │ }    │   │ _    │      │      │      │      │      │
+            // │      │      │      │      │      │      │   │      │      │      │      │      │      │
+            // └──────┴──────┴──────┼──────┼──────┼──────┤   └──────┼──────┼──────┼──────┴──────┴──────┘
+            //                      │ [    │ ]    │ SPC  │   │ ENT  │      │ CAPW │
+            //                      │      │      │      │   │      │      │ SHFT │
+            //                      └──────┴──────┴──────┘   └──────┴──────┴──────┘
 
             bindings = <
 &trans  &kp EXCL         &kp AT         &kp HASH       &kp DLLR        &kp PRCNT    &none      &kp HOME  &td_up    &kp END    &kp PG_UP  &none
-&trans  &mt LCTRL CARET  &mt LALT AMPS  &mt LGUI STAR  &mt LSHFT LPAR  &kp RPAR     &none      &td_left  &td_down  &td_right  &kp PG_DN  &none
-&trans  &none            &none          &none          &kp LBRC        &kp RBRC     &kp UNDER  &none     &none     &none      &none      &none
+&none   &mt LCTRL CARET  &mt LALT AMPS  &mt LGUI STAR  &mt LSHFT LPAR  &kp RPAR     &none      &td_left  &td_down  &td_right  &kp PG_DN  &none
+&none   &none            &none          &none          &kp LBRC        &kp RBRC     &kp UNDER  &none     &none     &none      &none      &none
                                         &kp LBKT       &kp RBKT        &kp SPACE    &kp RET    &trans    &trans
             >;
         };
 
         layer_3 {
             display-name = "Fn";
+
+            // ┌──────┬──────┬──────┬──────┬──────┬──────┐   ┌──────┬──────┬──────┬──────┬──────┬──────┐
+            // │ HYPR │ HYPR │ HYPR │ HYPR │      │ S+G  │   │      │ F7   │ F8   │ F9   │ F12  │      │
+            // │ +TAB │ +1   │ +2   │ +3   │      │ +T   │   │      │      │      │      │      │      │
+            // ├──────┼──────┼──────┼──────┼──────┼──────┤   ├──────┼──────┼──────┼──────┼──────┼──────┤
+            // │ HYPR │ HYPR │ HYPR │      │      │ GUI  │   │      │ F4   │ F5   │ F6   │ F11  │      │ 
+            // │ +`   │ +A   │ +S   │      │      │ +H   │   │      │      │      │      │      │      │
+            // ├──────┼──────┼──────┼──────┼──────┼──────┤   ├──────┼──────┼──────┼──────┼──────┼──────┤
+            // │ L4   │ HYPR │      │      │      │ A+G  │   │      │ F1   │ F2   │ F3   │ F10  │ L4   │
+            // │      │ +Z   │      │      │      │ +H   │   │      │      │      │      │      │      │
+            // └──────┴──────┴──────┼──────┼──────┼──────┤   └──────┼──────┼──────┼──────┴──────┴──────┘
+            //                      │      │ INS  │      │   │      │ INS  │      │
+            //                      │      │      │      │   │      │      │      │
+            //                      └──────┴──────┴──────┘   └──────┴──────┴──────┘
+
             bindings = <
 &kp LS(LA(LC(LG(TAB))))    &kp LS(LA(LC(LG(N1))))  &kp LS(LA(LC(LG(N2))))  &kp LS(LA(LC(LG(N3))))  &none    &kp LS(LG(T))    &none   &kp F7   &kp F8  &kp F9  &kp F12  &none
 &kp LS(LA(LC(LG(GRAVE))))  &kp LS(LA(LC(LG(A))))   &kp LS(LA(LC(LG(S))))   &none                   &none    &kp LG(H)        &none   &kp F4   &kp F5  &kp F6  &kp F11  &none
@@ -201,6 +232,22 @@
         };
 
         layer_4 {
+            display-name = "ADJUST";
+
+            // ┌──────┬──────┬──────┬──────┬──────┬──────┐   ┌──────┬──────┬──────┬──────┬──────┬──────┐
+            // │ BT   │ BT   │ BT   │ BT   │ BT   │ BT   │   │ OUT  │ OUT  │      │      │      │      │
+            // │ CLR  │ 1    │ 2    │ 3    │ 4    │ 5    │   │ BLE  │ USB  │      │      │      │      │
+            // ├──────┼──────┼──────┼──────┼──────┼──────┤   ├──────┼──────┼──────┼──────┼──────┼──────┤
+            // │ BT   │ EP   │ EP   │      │ SYS  │ BOOT │   │ BOOT │ RGB  │ RGB  │ RGB  │ RGB  │      │ 
+            // │ CLRA │ OFF  │ ON   │      │ RSET │ LOAD │   │ LOAD │ SPD+ │ BR+  │ SA+  │ HUE+ │      │
+            // ├──────┼──────┼──────┼──────┼──────┼──────┤   ├──────┼──────┼──────┼──────┼──────┼──────┤
+            // │      │ RGB  │ RGB  │      │ RGB  │ RGB  │   │      │ RGB  │ RGB  │ RGB  │ RGB  │      │
+            // │      │ OFF  │ ON   │      │ NEXT │ PREV │   │      │ SPD- │ BR-  │ SA-  │ HUE- │      │
+            // └──────┴──────┴──────┼──────┼──────┼──────┤   └──────┼──────┼──────┼──────┴──────┴──────┘
+            //                      │      │      │      │   │      │      │      │
+            //                      │      │      │      │   │      │      │      │
+            //                      └──────┴──────┴──────┘   └──────┴──────┴──────┘
+
             bindings = <
 &bt BT_CLR      &bt BT_SEL 0       &bt BT_SEL 1      &bt BT_SEL 2  &bt BT_SEL 3     &bt BT_SEL 4       &out OUT_BLE  &out OUT_USB     &none            &none            &none            &none
 &bt BT_CLR_ALL  &ext_power EP_OFF  &ext_power EP_ON  &none         &sys_reset       &bootloader        &bootloader   &rgb_ug RGB_SPI  &rgb_ug RGB_BRI  &rgb_ug RGB_SAI  &rgb_ug RGB_HUI  &none
