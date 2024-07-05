@@ -54,6 +54,8 @@
             label = "TD_UP";
             #binding-cells = <0>;
             bindings = <&mt LG(UP) UP>, <&kp UP>;
+
+            tapping-term-ms = <150>;
         };
 
         td_left: td_left {
@@ -61,6 +63,8 @@
             label = "TD_LEFT";
             #binding-cells = <0>;
             bindings = <&mt LG(LEFT) LEFT>, <&kp LEFT>;
+
+            tapping-term-ms = <150>;
         };
 
         td_down: td_down {
@@ -68,6 +72,8 @@
             label = "TD_DOWN";
             #binding-cells = <0>;
             bindings = <&mt LG(DOWN) DOWN>, <&kp DOWN>;
+
+            tapping-term-ms = <150>;
         };
 
         td_right: td_right {
@@ -75,6 +81,8 @@
             label = "TD_RIGHT";
             #binding-cells = <0>;
             bindings = <&mt LG(RIGHT) RIGHT>, <&kp RIGHT>;
+
+            tapping-term-ms = <150>;
         };
     };
 
@@ -109,6 +117,16 @@
         C_DoubleBKT {
             bindings = <&M_DBKT>;
             key-positions = <28 29>;
+        };
+
+        C_DeleteFile {
+            bindings = <&kp LG(BSPC)>;
+            key-positions = <2 4>;
+        };
+
+        C_Underscore {
+            bindings = <&kp UNDER>;
+            key-positions = <30 31>;
         };
     };
 
@@ -174,9 +192,9 @@
             //                      └──────┴──────┴──────┘   └──────┴──────┴──────┘
 
             bindings = <
-&trans     &kp PG_UP  &kp HOME  &td_up    &kp END    &kp PRCNT    &kp CARET     &kp N7        &kp N8        &kp N9       &kp N0                 &kp BSPC
-&sk LALT   &kp PG_DN  &td_left  &td_down  &td_right  &kp RET      &kp KP_PLUS   &mt RSHFT N4  &mt RGUI N5   &mt RALT N6  &mt RCTRL KP_ASTERISK  &kp KP_EQUAL
-&sk LSHFT  &sk LCTRL  &none     &none     &kp DEL    &kp TILDE    &kp KP_MINUS  &kp N1        &kp N2        &kp N3       &kp KP_SLASH           &trans
+&trans     &kp PG_UP  &kp HOME  &td_up    &kp END    &kp PRCNT    &kp CARET     &kp N7        &kp N8       &kp N9       &kp N0                 &kp BSPC
+&sk LALT   &kp PG_DN  &td_left  &td_down  &td_right  &kp RET      &kp KP_PLUS   &mt RSHFT N4  &mt RGUI N5  &mt RALT N6  &mt RCTRL KP_ASTERISK  &kp KP_EQUAL
+&sk LSHFT  &sk LCTRL  &none     &none     &kp DEL    &kp TILDE    &kp KP_MINUS  &kp N1        &kp N2       &kp N3       &kp KP_SLASH           &trans
                                 &trans    &trans     &trans       &trans        &kp KP_DOT    &trans
             >;
         };
