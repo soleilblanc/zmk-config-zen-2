@@ -25,7 +25,7 @@
             compatible = "zmk,behavior-tap-dance";
             label = "TD_CAP";
             #binding-cells = <0>;
-            bindings = <&mt LEFT_SHIFT CAPS>, <&kp LA(LC(LG(LSHFT)))>;
+            bindings = <&mt LEFT_SHIFT CAPS>, <&kp LC(LA(LS(LGUI)))>;
         };
 
         td_sp: td_sp {
@@ -46,7 +46,7 @@
             compatible = "zmk,behavior-tap-dance";
             label = "TD_FN";
             #binding-cells = <0>;
-            bindings = <&kp RCTRL>, <&kp INS>;
+            bindings = <&kp INS>, <&kp RSHFT>;
         };
 
         td_up: td_up {
@@ -55,7 +55,7 @@
             #binding-cells = <0>;
             bindings = <&mt LG(UP) UP>, <&kp UP>;
 
-            tapping-term-ms = <150>;
+            tapping-term-ms = <180>;
         };
 
         td_left: td_left {
@@ -64,7 +64,7 @@
             #binding-cells = <0>;
             bindings = <&mt LG(LEFT) LEFT>, <&kp LEFT>;
 
-            tapping-term-ms = <150>;
+            tapping-term-ms = <180>;
         };
 
         td_down: td_down {
@@ -73,7 +73,7 @@
             #binding-cells = <0>;
             bindings = <&mt LG(DOWN) DOWN>, <&kp DOWN>;
 
-            tapping-term-ms = <150>;
+            tapping-term-ms = <180>;
         };
 
         td_right: td_right {
@@ -82,7 +82,7 @@
             #binding-cells = <0>;
             bindings = <&mt LG(RIGHT) RIGHT>, <&kp RIGHT>;
 
-            tapping-term-ms = <150>;
+            tapping-term-ms = <180>;
         };
     };
 
@@ -126,7 +126,42 @@
 
         C_Underscore {
             bindings = <&kp UNDER>;
-            key-positions = <30 31>;
+            key-positions = <31 33>;
+        };
+
+        C_LEnter {
+            bindings = <&kp RET>;
+            key-positions = <14 15 16>;
+        };
+
+        C_LessThan {
+            bindings = <&kp LT>;
+            key-positions = <31 32>;
+        };
+
+        C_GreaterThan {
+            bindings = <&kp GT>;
+            key-positions = <32 33>;
+        };
+
+        C_JPY {
+            bindings = <&kp LA(Y)>;
+            key-positions = <7 8>;
+        };
+
+        C_Star {
+            bindings = <&kp STAR>;
+            key-positions = <8 20>;
+        };
+
+        C_REnter {
+            bindings = <&kp RET>;
+            key-positions = <19 20 21>;
+        };
+
+        C_DoubleBRC {
+            bindings = <&M_DBRC>;
+            key-positions = <4 5>;
         };
     };
 
@@ -143,6 +178,13 @@
             #binding-cells = <0>;
             bindings = <&kp LBKT &kp RBKT &kp LEFT>;
             label = "M_DBKT";
+        };
+
+        M_DBRC: M_DBRC {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LBRC &kp RBRC &kp LEFT>;
+            label = "M_DBRC";
         };
     };
 
@@ -167,8 +209,8 @@
             //                      └──────┴──────┴──────┘   └──────┴──────┴──────┘
 
             bindings = <
-&kp TAB         &kp Q  &kp W  &kp E         &kp R       &kp T     &kp Y        &kp U      &kp I      &kp O    &kp P     &kp BSLH
-&mt LALT GRAVE  &kp A  &kp S  &kp D         &kp F       &kp G     &kp H        &kp J      &kp K      &kp L    &kp SQT   &kp SEMI
+&kp TAB         &kp Q  &kp W  &kp E         &kp R       &kp T     &kp Y        &kp U      &kp I      &kp O    &kp P     &mt BSLH MINUS
+&mt LALT GRAVE  &kp A  &kp S  &kp D         &kp F       &kp G     &kp H        &kp J      &kp K      &kp L    &kp SQT   &mt RCTRL SEMI
 &td_cap         &kp Z  &kp X  &kp C         &kp V       &kp B     &kp N        &kp M      &kp COMMA  &kp DOT  &kp FSLH  &td_fn
                               &mt LGUI ESC  &lt 1 BSPC  &td_sp    &lt 3 ENTER  &lt 2 DEL  &td_cw
             >;
@@ -192,10 +234,10 @@
             //                      └──────┴──────┴──────┘   └──────┴──────┴──────┘
 
             bindings = <
-&trans     &kp PG_UP  &kp HOME  &td_up    &kp END    &kp PRCNT    &kp CARET     &kp N7        &kp N8       &kp N9       &kp N0                 &kp BSPC
-&sk LALT   &kp PG_DN  &td_left  &td_down  &td_right  &kp RET      &kp KP_PLUS   &mt RSHFT N4  &mt RGUI N5  &mt RALT N6  &mt RCTRL KP_ASTERISK  &kp KP_EQUAL
-&sk LSHFT  &sk LCTRL  &none     &none     &kp DEL    &kp TILDE    &kp KP_MINUS  &kp N1        &kp N2       &kp N3       &kp KP_SLASH           &trans
-                                &trans    &trans     &trans       &trans        &kp KP_DOT    &trans
+&trans  &kp HOME   &kp PG_UP  &kp PAGE_DOWN  &kp END    &kp PRCNT    &kp CARET  &kp N7        &kp N8       &kp N9       &kp N0          &kp BSPC
+&trans  &td_left   &td_up     &td_down       &td_right  &kp RET      &kp PLUS   &mt RSHFT N4  &mt RGUI N5  &mt RALT N6  &mt RCTRL STAR  &trans
+&trans  &sk LCTRL  &sk LALT   &sk LGUI       &sk LSHFT  &kp DEL      &kp MINUS  &kp N1        &kp N2       &kp N3       &trans          &kp EQUAL
+                              &trans         &trans     &trans       &trans     &kp KP_DOT    &trans
             >;
         };
 
@@ -217,9 +259,9 @@
             //                      └──────┴──────┴──────┘   └──────┴──────┴──────┘
 
             bindings = <
-&trans  &kp EXCL         &kp AT         &kp HASH       &kp DLLR        &kp PRCNT    &none      &kp HOME  &td_up    &kp END    &kp PG_UP  &none
-&none   &mt LCTRL CARET  &mt LALT AMPS  &mt LGUI STAR  &mt LSHFT LPAR  &kp RPAR     &none      &td_left  &td_down  &td_right  &kp PG_DN  &none
-&none   &none            &none          &none          &kp LBRC        &kp RBRC     &kp UNDER  &none     &none     &none      &none      &none
+&trans  &kp EXCL         &kp AT         &kp HASH       &kp DLLR        &kp PRCNT    &none      &kp HOME  &kp PG_UP  &kp PG_DN  &kp END    &trans
+&trans  &mt LCTRL CARET  &mt LALT AMPS  &mt LGUI STAR  &mt LSHFT LPAR  &kp RPAR     &kp PIPE   &td_left  &td_down   &td_up     &td_right  &kp DQT
+&trans  &kp QMARK        &kp LT         &kp GT         &kp LBRC        &kp RBRC     &kp UNDER  &none     &kp LT     &kp GT     &kp QMARK  &kp COLON
                                         &kp LBKT       &kp RBKT        &kp SPACE    &kp RET    &trans    &trans
             >;
         };
@@ -242,10 +284,10 @@
             //                      └──────┴──────┴──────┘   └──────┴──────┴──────┘
 
             bindings = <
-&kp LS(LA(LC(LG(TAB))))    &kp LS(LA(LC(LG(N1))))  &kp LS(LA(LC(LG(N2))))  &kp LS(LA(LC(LG(N3))))  &none    &kp LS(LG(T))    &none   &kp F7   &kp F8  &kp F9  &kp F12  &none
-&kp LS(LA(LC(LG(GRAVE))))  &kp LS(LA(LC(LG(A))))   &kp LS(LA(LC(LG(S))))   &none                   &none    &kp LG(H)        &none   &kp F4   &kp F5  &kp F6  &kp F11  &none
-&mo 4                      &kp LS(LC(LA(LG(Z))))   &none                   &none                   &none    &kp LA(LG(H))    &none   &kp F1   &kp F2  &kp F3  &kp F10  &mo 4
-                                                                           &none                   &kp INS  &trans           &trans  &kp INS  &none
+&none   &kp LS(LA(LC(LG(N1))))  &kp LS(LA(LC(LG(N2))))  &kp LS(LA(LC(LG(N3))))  &none      &kp LS(LG(T))    &kp LS(LG(N4))  &kp F7   &kp F8  &kp F9  &kp F12  &none
+&trans  &none                   &none                   &none                   &kp LG(J)  &kp LG(H)        &kp LS(LG(N5))  &kp F4   &kp F5  &kp F6  &kp F11  &kp RCTRL
+&mo 4   &none                   &none                   &none                   &none      &kp LA(LG(H))    &none           &kp F1   &kp F2  &kp F3  &kp F10  &mo 4
+                                                        &none                   &kp INS    &trans           &trans          &kp INS  &trans
             >;
         };
 
