@@ -131,24 +131,19 @@
             key-positions = <19 20 21>;
         };
 
-        cb_Underscore {
-            bindings = <&kp UNDER>;
-            key-positions = <31 33>;
-        };
-
-        cb_LessThan {
-            bindings = <&kp LT>;
-            key-positions = <31 32>;
-        };
-
-        cb_GreaterThan {
-            bindings = <&kp GT>;
-            key-positions = <32 33>;
-        };
-
         cb_JPY {
             bindings = <&kp LA(Y)>;
             key-positions = <7 8>;
+        };
+
+        cb_LTGT {
+            bindings = <&M_LTGT>;
+            key-positions = <31 32>;
+        };
+
+        cb_Underscore {
+            bindings = <&kp UNDER>;
+            key-positions = <32 33>;
         };
 
         cb_Star {
@@ -177,6 +172,13 @@
             #binding-cells = <0>;
             bindings = <&kp LBRC &kp RBRC &kp LEFT>;
             label = "M_DBRC";
+        };
+
+        M_LTGT: M_LTGT {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LT &kp GT &kp LEFT>;
+            label = "M_LTGT";
         };
     };
 
