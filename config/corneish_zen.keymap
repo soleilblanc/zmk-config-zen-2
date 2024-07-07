@@ -46,35 +46,35 @@
             compatible = "zmk,behavior-tap-dance";
             label = "TD_FN";
             #binding-cells = <0>;
-            bindings = <&kp INS>, <&kp RSHFT>;
+            bindings = <&kp RGUI>, <&kp INS>;
         };
 
         td_up: td_up {
             compatible = "zmk,behavior-tap-dance";
             label = "TD_UP";
             #binding-cells = <0>;
-            bindings = <&mt LG(UP) UP>, <&kp UP>;
+            bindings = <&kp UP>, <&mt LG(UP) LA(UP_ARROW)>;
         };
 
         td_left: td_left {
             compatible = "zmk,behavior-tap-dance";
             label = "TD_LEFT";
             #binding-cells = <0>;
-            bindings = <&mt LG(LEFT) LEFT>, <&kp LEFT>;
+            bindings = <&kp LEFT>, <&mt LG(LEFT) LA(LEFT)>;
         };
 
         td_down: td_down {
             compatible = "zmk,behavior-tap-dance";
             label = "TD_DOWN";
             #binding-cells = <0>;
-            bindings = <&mt LG(DOWN) DOWN>, <&kp DOWN>;
+            bindings = <&kp DOWN>, <&mt LG(DOWN) LA(DOWN)>;
         };
 
         td_right: td_right {
             compatible = "zmk,behavior-tap-dance";
             label = "TD_RIGHT";
             #binding-cells = <0>;
-            bindings = <&mt LG(RIGHT) RIGHT>, <&kp RIGHT>;
+            bindings = <&kp RIGHT>, <&mt LG(RIGHT) LA(RIGHT)>;
         };
     };
 
@@ -149,6 +149,11 @@
         cb_L4Tog {
             bindings = <&tog 4>;
             key-positions = <25 34>;
+        };
+
+        cb_BackForward {
+            bindings = <&mt LG(LBKT) LG(RBKT)>;
+            key-positions = <2 3>;
         };
     };
 
@@ -260,8 +265,8 @@
             >;
         };
 
-        layer_3 {
-            display-name = "Fn";
+        fn_layer {
+            display-name = "FUNC";
 
             // ┌──────┬──────┬──────┬──────┬──────┬──────┐   ┌──────┬──────┬──────┬──────┬──────┬──────┐
             // │      │ HYPR │ HYPR │ HYPR │      │ S+G  │   │ S+G  │ F7   │ F8   │ F9   │ F12  │      │
@@ -280,13 +285,13 @@
             bindings = <
 &none   &kp LC(LA(LS(LG(N1))))  &kp LC(LA(LS(LG(N2))))  &kp LC(LA(LS(LG(N3))))  &none      &kp LS(LG(T))    &kp LS(LG(N4))  &kp F7   &kp F8  &kp F9  &kp F12  &none
 &trans  &none                   &none                   &none                   &kp LG(J)  &kp LG(H)        &kp LS(LG(N5))  &kp F4   &kp F5  &kp F6  &kp F11  &kp RCTRL
-&mo 4   &none                   &none                   &none                   &none      &kp LA(LG(H))    &none           &kp F1   &kp F2  &kp F3  &kp F10  &mo 4
+&mo 6   &kp LC(LA(LS(LG(O))))   &kp LC(LA(LS(LG(P))))   &none                   &none      &kp LA(LG(H))    &none           &kp F1   &kp F2  &kp F3  &kp F10  &mo 6
                                                         &none                   &kp INS    &trans           &trans          &kp INS  &trans
             >;
         };
 
         layer_4 {
-            display-name = "ADJUST";
+            display-name = "PLAY";
 
             // ┌──────┬──────┬──────┬──────┬──────┬──────┐   ┌──────┬──────┬──────┬──────┬──────┬──────┐
             // │ BT   │ BT   │ BT   │ BT   │ BT   │ BT   │   │ OUT  │ OUT  │      │      │      │      │
@@ -303,7 +308,27 @@
             //                      └──────┴──────┴──────┘   └──────┴──────┴──────┘
 
             bindings = <
-&bt BT_CLR      &bt BT_SEL 0       &bt BT_SEL 1      &bt BT_SEL 2  &bt BT_SEL 3     &bt BT_SEL 4       &out OUT_BLE  &out OUT_USB     &none            &none            &none            &tog 4
+&kp C_VOL_UP  &kp J              &kp E    &kp R     &kp L                &none        &none  &none  &none  &none  &none  &none
+&kp C_VOL_DN  &mt LA(LEFT) LEFT  &kp UP   &kp DOWN  &mt LA(RIGHT) RIGHT  &kp F        &none  &none  &none  &none  &none  &none
+&kp C_MUTE    &kp COMMA          &kp DOT  &kp C     &none                &none        &none  &none  &none  &none  &none  &none
+                                          &none     &mo 5                &kp SPACE    &none  &none  &none
+            >;
+        };
+
+        layer_5 {
+            display-name = "PAD";
+            bindings = <
+&trans  &none            &kp KP_N7  &kp KP_N8  &kp KP_N9  &kp KP_N0       &none  &none  &none  &none  &none  &none
+&trans  &kp KP_MULTIPLY  &kp KP_N4  &kp KP_N5  &kp KP_N6  &kp KP_PLUS     &none  &none  &none  &none  &none  &none
+&trans  &kp KP_SLASH     &kp KP_N1  &kp KP_N2  &kp KP_N3  &kp KP_MINUS    &none  &none  &none  &none  &none  &none
+                                    &none      &trans     &kp SPACE       &none  &none  &none
+            >;
+        };
+
+        layer_6 {
+            display-name = "ADJUST";
+            bindings = <
+&bt BT_CLR      &bt BT_SEL 0       &bt BT_SEL 1      &bt BT_SEL 2  &bt BT_SEL 3     &bt BT_SEL 4       &out OUT_BLE  &out OUT_USB     &none            &none            &none            &tog 6
 &bt BT_CLR_ALL  &ext_power EP_OFF  &ext_power EP_ON  &none         &sys_reset       &bootloader        &bootloader   &rgb_ug RGB_SPI  &rgb_ug RGB_BRI  &rgb_ug RGB_SAI  &rgb_ug RGB_HUI  &none
 &trans          &rgb_ug RGB_OFF    &rgb_ug RGB_ON    &none         &rgb_ug RGB_EFF  &rgb_ug RGB_EFR    &none         &rgb_ug RGB_SPD  &rgb_ug RGB_BRD  &rgb_ug RGB_SAD  &rgb_ug RGB_HUD  &trans
                                                      &none         &none            &none              &none         &none            &none
