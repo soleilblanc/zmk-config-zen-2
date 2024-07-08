@@ -21,30 +21,30 @@
 
 / {
     behaviors {
-        td_cap: td_cap {
+        td_shft_caps_hypr: td_shft_caps_hypr {
             compatible = "zmk,behavior-tap-dance";
-            label = "TD_CAP";
+            label = "TD_SHFT_CAPS_HYPR";
             #binding-cells = <0>;
             bindings = <&mt LEFT_SHIFT CAPS>, <&kp LC(LA(LS(LGUI)))>;
         };
 
-        td_sp: td_sp {
+        td_spc_L3: td_spc_L3 {
             compatible = "zmk,behavior-tap-dance";
-            label = "TD_SP";
+            label = "TD_SPC_L3";
             #binding-cells = <0>;
-            bindings = <&lt 3 SPACE>, <&kp SPACE>;
+            bindings = <&kp SPACE>, <&mo 3>;
         };
 
-        td_cw: td_cw {
+        td_shft_capsword: td_shft_capsword {
             compatible = "zmk,behavior-tap-dance";
-            label = "TD_CW";
+            label = "TD_SHFT_CAPSWORD";
             #binding-cells = <0>;
             bindings = <&kp RSHFT>, <&caps_word>;
         };
 
-        td_fn: td_fn {
+        td_cmd_fn: td_cmd_fn {
             compatible = "zmk,behavior-tap-dance";
-            label = "TD_FN";
+            label = "TD_CMD_FN";
             #binding-cells = <0>;
             bindings = <&kp RGUI>, <&kp INS>;
         };
@@ -155,6 +155,11 @@
             bindings = <&tog 4>;
             key-positions = <37 38>;
         };
+
+        cb_L6Tog {
+            bindings = <&tog 6>;
+            key-positions = <39 40>;
+        };
     };
 
     macros {
@@ -208,10 +213,10 @@
             //                      └──────┴──────┴──────┘   └──────┴──────┴──────┘
 
             bindings = <
-&kp TAB         &kp Q  &kp W  &kp E         &kp R       &kp T     &kp Y      &kp U      &kp I      &kp O    &kp P     &mt BSLH MINUS
-&mt LALT GRAVE  &kp A  &kp S  &kp D         &kp F       &kp G     &kp H      &kp J      &kp K      &kp L    &kp SQT   &mt RCTRL SEMI
-&td_cap         &kp Z  &kp X  &kp C         &kp V       &kp B     &kp N      &kp M      &kp COMMA  &kp DOT  &kp FSLH  &td_fn
-                              &mt LGUI ESC  &lt 1 BSPC  &td_sp    &lt 3 RET  &lt 2 DEL  &td_cw
+&kp TAB             &kp Q  &kp W  &kp E         &kp R       &kp T         &kp Y      &kp U      &kp I              &kp O    &kp P     &mt BSLH MINUS
+&mt LALT GRAVE      &kp A  &kp S  &kp D         &kp F       &kp G         &kp H      &kp J      &kp K              &kp L    &kp SQT   &mt RCTRL SEMI
+&td_shft_caps_hypr  &kp Z  &kp X  &kp C         &kp V       &kp B         &kp N      &kp M      &kp COMMA          &kp DOT  &kp FSLH  &td_cmd_fn
+                                  &mt LGUI ESC  &lt 1 BSPC  &td_spc_L3    &lt 3 RET  &lt 2 DEL  &td_shft_capsword
             >;
         };
 
@@ -283,10 +288,10 @@
             //                      └──────┴──────┴──────┘   └──────┴──────┴──────┘
 
             bindings = <
-&none   &kp LC(LA(LS(LG(N1))))  &kp LC(LA(LS(LG(N2))))  &kp LC(LA(LS(LG(N3))))  &kp LS(LG(N2))  &kp LS(LG(T))    &kp LS(LG(N4))  &kp F7   &kp F8  &kp F9  &kp F12  &none
-&trans  &kp LC(LA(LS(LG(O))))   &kp LC(LA(LS(LG(P))))   &none                   &kp LG(J)       &kp LG(H)        &kp LS(LG(N5))  &kp F4   &kp F5  &kp F6  &kp F11  &kp RCTRL
-&mo 6   &kp LG(K)               &kp LA(LS(LG(V)))       &kp LA(LG(C))           &kp LA(LG(V))   &kp LA(LG(H))    &none           &kp F1   &kp F2  &kp F3  &kp F10  &mo 6
-                                                        &mt LGUI ESC            &kp INS         &trans           &trans          &kp INS  &trans
+&none      &kp LC(LA(LS(LG(N1))))  &kp LC(LA(LS(LG(N2))))  &kp LC(LA(LS(LG(N3))))  &kp LS(LG(N2))  &kp LS(LG(T))    &kp LS(LG(N4))  &kp F7   &kp F8  &kp F9  &kp F12  &none
+&sk LALT   &kp LC(LA(LS(LG(O))))   &kp LC(LA(LS(LG(P))))   &none                   &kp LG(J)       &kp LG(H)        &kp LS(LG(N5))  &kp F4   &kp F5  &kp F6  &kp F11  &sk RCTRL
+&sk LSHFT  &kp LG(K)               &kp LA(LS(LG(V)))       &kp LA(LG(C))           &kp LA(LG(V))   &kp LA(LG(H))    &none           &kp F1   &kp F2  &kp F3  &kp F10  &sk RGUI
+                                                           &mt LGUI ESC            &kp INS         &trans           &trans          &kp INS  &trans
             >;
         };
 
@@ -358,7 +363,7 @@
             //                      └──────┴──────┴──────┘   └──────┴──────┴──────┘
 
             bindings = <
-&bt BT_CLR      &bt BT_SEL 0       &bt BT_SEL 1      &bt BT_SEL 2  &bt BT_SEL 3     &bt BT_SEL 4       &out OUT_BLE  &out OUT_USB     &none            &none            &none            &none
+&bt BT_CLR      &bt BT_SEL 0       &bt BT_SEL 1      &bt BT_SEL 2  &bt BT_SEL 3     &bt BT_SEL 4       &out OUT_BLE  &out OUT_USB     &none            &none            &none            &tog 6
 &bt BT_CLR_ALL  &ext_power EP_OFF  &ext_power EP_ON  &none         &sys_reset       &bootloader        &bootloader   &rgb_ug RGB_SPI  &rgb_ug RGB_BRI  &rgb_ug RGB_SAI  &rgb_ug RGB_HUI  &none
 &trans          &rgb_ug RGB_OFF    &rgb_ug RGB_ON    &none         &rgb_ug RGB_EFF  &rgb_ug RGB_EFR    &none         &rgb_ug RGB_SPD  &rgb_ug RGB_BRD  &rgb_ug RGB_SAD  &rgb_ug RGB_HUD  &trans
                                                      &none         &none            &none              &none         &none            &none
