@@ -28,11 +28,13 @@
             bindings = <&mt LEFT_SHIFT CAPS>, <&kp LC(LA(LS(LGUI)))>;
         };
 
-        td_spc_L3: td_spc_L3 {
+        td_L3_spc_spc: td_L3_spc_spc {
             compatible = "zmk,behavior-tap-dance";
-            label = "TD_SPC_L3";
+            label = "TD_L3_SPC_SPC";
             #binding-cells = <0>;
-            bindings = <&kp SPACE>, <&mo 3>;
+            bindings = <&lt 3 BSPC>, <&kp SPACE>;
+
+            tapping-term-ms = <250>;
         };
 
         td_shft_capsword: td_shft_capsword {
@@ -61,6 +63,8 @@
             label = "TD_LEFT";
             #binding-cells = <0>;
             bindings = <&kp LEFT>, <&mt LG(LEFT) LA(LEFT)>;
+
+            tapping-term-ms = <250>;
         };
 
         td_down: td_down {
@@ -213,10 +217,10 @@
             //                      └──────┴──────┴──────┘   └──────┴──────┴──────┘
 
             bindings = <
-&kp TAB             &kp Q  &kp W  &kp E         &kp R       &kp T         &kp Y      &kp U      &kp I              &kp O    &kp P     &mt BSLH MINUS
-&mt LALT GRAVE      &kp A  &kp S  &kp D         &kp F       &kp G         &kp H      &kp J      &kp K              &kp L    &kp SQT   &mt RCTRL SEMI
-&td_shft_caps_hypr  &kp Z  &kp X  &kp C         &kp V       &kp B         &kp N      &kp M      &kp COMMA          &kp DOT  &kp FSLH  &td_cmd_fn
-                                  &mt LGUI ESC  &lt 1 BSPC  &td_spc_L3    &lt 3 RET  &lt 2 DEL  &td_shft_capsword
+&kp TAB             &kp Q  &kp W  &kp E         &kp R       &kp T             &kp Y      &kp U      &kp I              &kp O    &kp P     &mt BSLH MINUS
+&mt LALT GRAVE      &kp A  &kp S  &kp D         &kp F       &kp G             &kp H      &kp J      &kp K              &kp L    &kp SQT   &mt RCTRL SEMI
+&td_shft_caps_hypr  &kp Z  &kp X  &kp C         &kp V       &kp B             &kp N      &kp M      &kp COMMA          &kp DOT  &kp FSLH  &td_cmd_fn
+                                  &mt LGUI ESC  &lt 1 BSPC  &td_L3_spc_spc    &lt 3 RET  &lt 2 DEL  &td_shft_capsword
             >;
         };
 
