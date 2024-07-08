@@ -32,7 +32,7 @@
             compatible = "zmk,behavior-tap-dance";
             label = "TD_L3_SPC_SPC";
             #binding-cells = <0>;
-            bindings = <&lt 3 BSPC>, <&kp SPACE>;
+            bindings = <&lt 3 SPACE>, <&kp SPACE>;
 
             tapping-term-ms = <250>;
         };
