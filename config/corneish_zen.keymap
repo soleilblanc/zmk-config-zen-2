@@ -26,6 +26,8 @@
             label = "TD_SHFT_CAPS_HYPR";
             #binding-cells = <0>;
             bindings = <&mt LEFT_SHIFT CAPS>, <&kp LC(LA(LS(LGUI)))>;
+
+            tapping-term-ms = <250>;
         };
 
         td_L3_spc_spc: td_L3_spc_spc {
@@ -42,6 +44,8 @@
             label = "TD_SHFT_CAPSWORD";
             #binding-cells = <0>;
             bindings = <&kp RSHFT>, <&caps_word>;
+
+            tapping-term-ms = <250>;
         };
 
         td_cmd_fn: td_cmd_fn {
@@ -49,6 +53,8 @@
             label = "TD_CMD_FN";
             #binding-cells = <0>;
             bindings = <&kp RGUI>, <&kp INS>;
+
+            tapping-term-ms = <250>;
         };
 
         td_up: td_up {
@@ -56,6 +62,8 @@
             label = "TD_UP";
             #binding-cells = <0>;
             bindings = <&kp UP>, <&mt LG(UP) LA(UP_ARROW)>;
+
+            tapping-term-ms = <250>;
         };
 
         td_left: td_left {
@@ -72,6 +80,8 @@
             label = "TD_DOWN";
             #binding-cells = <0>;
             bindings = <&kp DOWN>, <&mt LG(DOWN) LA(DOWN)>;
+
+            tapping-term-ms = <250>;
         };
 
         td_right: td_right {
@@ -79,6 +89,8 @@
             label = "TD_RIGHT";
             #binding-cells = <0>;
             bindings = <&kp RIGHT>, <&mt LG(RIGHT) LA(RIGHT)>;
+
+            tapping-term-ms = <250>;
         };
     };
 
