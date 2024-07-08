@@ -81,9 +81,9 @@
     combos {
         compatible = "zmk,combos";
 
-        cb_HyperLink {
-            bindings = <&kp LG(K)>;
-            key-positions = <25 26>;
+        cb_Hash {
+            bindings = <&kp POUND>;
+            key-positions = <3 15>;
         };
 
         cb_FormatCopy {
