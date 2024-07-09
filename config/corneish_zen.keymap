@@ -97,24 +97,24 @@
     combos {
         compatible = "zmk,combos";
 
-        cb_Hash {
-            bindings = <&kp POUND>;
-            key-positions = <3 15>;
+        cb_up {
+            bindings = <&kp UP>;
+            key-positions = <2 3>;
         };
 
-        cb_FormatCopy {
-            bindings = <&kp LA(LG(C))>;
-            key-positions = <26 27>;
+        cb_down {
+            bindings = <&kp LEFT>;
+            key-positions = <3 4>;
         };
 
-        cb_FormatPaste {
-            bindings = <&kp LA(LG(V))>;
-            key-positions = <27 28>;
+        cb_leftw {
+            bindings = <&kp RIGHT>;
+            key-positions = <14 15>;
         };
 
-        cb_PasteWithFormat {
-            bindings = <&kp LS(LA(LG(V)))>;
-            key-positions = <26 28>;
+        cb_right {
+            bindings = <&kp DOWN>;
+            key-positions = <15 16>;
         };
 
         cb_DoubleBRC {
@@ -134,7 +134,7 @@
 
         cb_BackForward {
             bindings = <&mt LG(RBKT) LG(LBKT)>;
-            key-positions = <2 3>;
+            key-positions = <13 14 15>;
         };
 
         cb_DeleteFile {
@@ -175,6 +175,11 @@
         cb_L6Tog {
             bindings = <&tog 6>;
             key-positions = <39 40>;
+        };
+
+        cb_hash {
+            bindings = <&kp HASH>;
+            key-positions = <3 15>;
         };
     };
 
@@ -255,7 +260,7 @@
 
             bindings = <
 &trans  &kp HOME   &kp PG_UP  &kp PAGE_DOWN  &kp END    &kp PRCNT    &kp CARET  &kp N7        &kp N8       &kp N9       &kp N0          &kp BSPC
-&trans  &td_left   &td_up     &td_down       &td_right  &kp RET      &kp PLUS   &mt RSHFT N4  &mt RGUI N5  &mt RALT N6  &mt RCTRL STAR  &trans
+&trans  &td_left   &td_down   &td_up         &td_right  &kp RET      &kp PLUS   &mt RSHFT N4  &mt RGUI N5  &mt RALT N6  &mt RCTRL STAR  &trans
 &trans  &sk LCTRL  &sk LALT   &sk LGUI       &sk LSHFT  &kp DEL      &kp MINUS  &kp N1        &kp N2       &kp N3       &trans          &kp EQUAL
                               &trans         &trans     &trans       &trans     &kp KP_DOT    &trans
             >;
