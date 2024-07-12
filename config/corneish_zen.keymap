@@ -26,7 +26,6 @@
             label = "TD_SHFT_CAPS_HYPR";
             #binding-cells = <0>;
             bindings = <&mt LEFT_SHIFT CAPS>, <&kp LC(LA(LS(LGUI)))>;
-
             tapping-term-ms = <250>;
         };
 
@@ -35,7 +34,6 @@
             label = "TD_L3_SPC_SPC";
             #binding-cells = <0>;
             bindings = <&lt 3 SPACE>, <&kp SPACE>;
-
             tapping-term-ms = <250>;
         };
 
@@ -44,7 +42,6 @@
             label = "TD_SHFT_CAPSWORD";
             #binding-cells = <0>;
             bindings = <&kp RSHFT>, <&caps_word>;
-
             tapping-term-ms = <250>;
         };
 
@@ -53,7 +50,6 @@
             label = "TD_CMD_FN";
             #binding-cells = <0>;
             bindings = <&kp RGUI>, <&kp INS>;
-
             tapping-term-ms = <250>;
         };
 
@@ -62,7 +58,6 @@
             label = "TD_UP";
             #binding-cells = <0>;
             bindings = <&kp UP>, <&mt LG(UP) LA(UP_ARROW)>;
-
             tapping-term-ms = <250>;
         };
 
@@ -71,7 +66,6 @@
             label = "TD_LEFT";
             #binding-cells = <0>;
             bindings = <&kp LEFT>, <&mt LG(LEFT) LA(LEFT)>;
-
             tapping-term-ms = <250>;
         };
 
@@ -80,7 +74,6 @@
             label = "TD_DOWN";
             #binding-cells = <0>;
             bindings = <&kp DOWN>, <&mt LG(DOWN) LA(DOWN)>;
-
             tapping-term-ms = <250>;
         };
 
@@ -89,7 +82,6 @@
             label = "TD_RIGHT";
             #binding-cells = <0>;
             bindings = <&kp RIGHT>, <&mt LG(RIGHT) LA(RIGHT)>;
-
             tapping-term-ms = <250>;
         };
 
@@ -173,11 +165,6 @@
             key-positions = <19 20 21>;
         };
 
-        cb_JPY {
-            bindings = <&kp LA(Y)>;
-            key-positions = <7 8>;
-        };
-
         cb_LTGT {
             bindings = <&M_LTGT>;
             key-positions = <32 33>;
@@ -198,24 +185,19 @@
             key-positions = <39 40>;
         };
 
-        cb_hash {
-            bindings = <&kp HASH>;
-            key-positions = <3 15>;
-        };
-
         cb_CapsWord {
             bindings = <&caps_word>;
             key-positions = <16 19>;
         };
 
-        cb_star {
-            bindings = <&kp STAR>;
-            key-positions = <8 20>;
-        };
-
         cb_at {
             bindings = <&kp AT>;
             key-positions = <2 14>;
+        };
+
+        cb_hash {
+            bindings = <&kp HASH>;
+            key-positions = <3 15>;
         };
 
         cb_dollar {
@@ -226,6 +208,16 @@
         cb_amps {
             bindings = <&kp AMPS>;
             key-positions = <7 19>;
+        };
+
+        cb_star {
+            bindings = <&kp STAR>;
+            key-positions = <8 20>;
+        };
+
+        cb_JPY {
+            bindings = <&kp LA(Y)>;
+            key-positions = <7 8>;
         };
     };
 
@@ -341,14 +333,14 @@
             display-name = "FUNC";
 
             // ┌──────┬──────┬──────┬──────┬──────┬──────┐   ┌──────┬──────┬──────┬──────┬──────┬──────┐
-            // │      │ HYPR │ HYPR │ HYPR │      │ S+G  │   │ S+G  │ F7   │ F8   │ F9   │ F12  │      │
-            // │      │ +1   │ +2   │ +3   │      │ +T   │   │ +4   │      │      │      │      │      │
+            // │      │ HYPR │ HYPR │ HYPR │ S+G  │ S+G  │   │ S+G  │ F7   │ F8   │ F9   │ F12  │      │
+            // │      │ +1   │ +2   │ +3   │ +2   │ +T   │   │ +4   │      │      │      │      │      │
             // ├──────┼──────┼──────┼──────┼──────┼──────┤   ├──────┼──────┼──────┼──────┼──────┼──────┤
-            // │ ___  │      │      │      │ GUI  │ GUI  │   │ S+G  │ F4   │ F5   │ F6   │ F11  │ CTRL │ 
-            // │      │      │      │      │ +J   │ +H   │   │ +5   │      │      │      │      │      │
+            // │ SK   │ HYPR │ HYPR │      │ GUI  │ GUI  │   │ S+G  │ F4   │ F5   │ F6   │ F11  │ SK   │ 
+            // │ ALT  │ +O   │ +P   │      │ +J   │ +H   │   │ +5   │      │      │      │      │ CTRL │
             // ├──────┼──────┼──────┼──────┼──────┼──────┤   ├──────┼──────┼──────┼──────┼──────┼──────┤
-            // │ L6   │ HYPR │ HYPR │      │      │ A+G  │   │      │ F1   │ F2   │ F3   │ F10  │ L6   │
-            // │      │ +O   │ +P   │      │      │ +H   │   │      │      │      │      │      │      │
+            // │ SK   │ GUI  │ ASG  │ A+G  │ A+G  │ A+G  │   │      │ F1   │ F2   │ F3   │ F10  │ SK   │
+            // │ SHFT │ +K   │ +V   │ +C   │ +V   │ +H   │   │      │      │      │      │      │ GUI  │
             // └──────┴──────┴──────┼──────┼──────┼──────┤   ├──────┼──────┼──────┼──────┴──────┴──────┘
             //                      │ ESC  │ INS  │ ___  │   │ ___  │ INS  │ ___  │
             //                      │ GUI  │      │      │   │      │      │      │
@@ -391,7 +383,7 @@
             display-name = "PAD";
 
             // ┌──────┬──────┬──────┬──────┬──────┬──────┐   ┌──────┬──────┬──────┬──────┬──────┬──────┐
-            // │ ___  │      │ 7    │ 8    │ 9    │ 0    │   │      │      │      │      │      │      │
+            // │ ___  │ L4   │ 7    │ 8    │ 9    │ 0    │   │      │      │      │      │      │      │
             // │      │      │      │      │      │      │   │      │      │      │      │      │      │
             // ├──────┼──────┼──────┼──────┼──────┼──────┤   ├──────┼──────┼──────┼──────┼──────┼──────┤
             // │ ___  │ *    │ 4    │ 5    │ 6    │ +    │   │      │      │      │      │      │      │ 
@@ -416,7 +408,7 @@
             display-name = "ADJUST";
 
             // ┌──────┬──────┬──────┬──────┬──────┬──────┐   ┌──────┬──────┬──────┬──────┬──────┬──────┐
-            // │ BT   │ BT   │ BT   │ BT   │ BT   │ BT   │   │ OUT  │ OUT  │      │      │      │      │
+            // │ BT   │ BT   │ BT   │ BT   │ BT   │ BT   │   │ OUT  │ OUT  │      │      │      │ L6   │
             // │ CLR  │ 1    │ 2    │ 3    │ 4    │ 5    │   │ BLE  │ USB  │      │      │      │      │
             // ├──────┼──────┼──────┼──────┼──────┼──────┤   ├──────┼──────┼──────┼──────┼──────┼──────┤
             // │ BT   │ EP   │ EP   │      │ SYS  │ BOOT │   │ BOOT │ RGB  │ RGB  │ RGB  │ RGB  │      │ 
@@ -433,7 +425,7 @@
 &bt BT_CLR      &bt BT_SEL 0       &bt BT_SEL 1      &bt BT_SEL 2  &bt BT_SEL 3     &bt BT_SEL 4       &out OUT_BLE  &out OUT_USB     &none            &none            &none            &tog 6
 &bt BT_CLR_ALL  &ext_power EP_OFF  &ext_power EP_ON  &none         &sys_reset       &bootloader        &bootloader   &rgb_ug RGB_SPI  &rgb_ug RGB_BRI  &rgb_ug RGB_SAI  &rgb_ug RGB_HUI  &none
 &trans          &rgb_ug RGB_OFF    &rgb_ug RGB_ON    &none         &rgb_ug RGB_EFF  &rgb_ug RGB_EFR    &none         &rgb_ug RGB_SPD  &rgb_ug RGB_BRD  &rgb_ug RGB_SAD  &rgb_ug RGB_HUD  &trans
-                                                     &none         &none            &none              &none         &none            &trans
+                                                     &none         &none            &none              &none         &none            &none
             >;
         };
     };
