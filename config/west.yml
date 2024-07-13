@@ -2,10 +2,26 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
+    - name: urob
+      url-base: https://github.com/urob      
   projects:
+
+# Standard, stable zmk repo
+#    - name: zmk
+#      remote: zmkfirmware
+#      revision: main
+#      import: app/west.yml
+
+# urob's zmk fork with mouse PR & many extra features
     - name: zmk
-      remote: zmkfirmware
+      remote: urob
       revision: main
       import: app/west.yml
+
+# Urob's zmk helpers that contain key position defines      
+    - name: zmk-helpers
+      remote: urob
+      revision: v2 # this will eventually become main
+
   self:
     path: config
