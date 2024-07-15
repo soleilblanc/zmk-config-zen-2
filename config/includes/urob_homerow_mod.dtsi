@@ -1,6 +1,6 @@
 #define HM_TAPPING_TERM 280
 #define HM_TAPPING_TERM_FAST 200
-#define HM_QUICK_TAP_MS 175
+#define HM_QUICK_TAP 175
 #define HM_PRIOR_IDLE 150
 
 
@@ -8,7 +8,7 @@
     ZMK_HOLD_TAP(NAME, \
         flavor = "balanced"; \
         tapping-term-ms = <HM_TAPPING_TERM>; \
-        quick-tap-ms = <HM_QUICK_TAP_MS>; \
+        quick-tap-ms = <HM_QUICK_TAP>; \
         require-prior-idle-ms = <HM_PRIOR_IDLE>; \
         bindings = <HOLD>, <TAP>; \
         hold-trigger-key-positions = <TRIGGER_POS>; \
