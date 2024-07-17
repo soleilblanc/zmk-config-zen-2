@@ -8,16 +8,16 @@ manifest:
       url-base: https://github.com/dhruvinsh
   projects:
 # Standard, stable zmk repo
-    - name: zmk
-      remote: zmkfirmware
-      revision: main
-      import: app/west.yml
-
-# urob's zmk fork with mouse PR & many extra features
 #    - name: zmk
-#      remote: urob
+#      remote: zmkfirmware
 #      revision: main
 #      import: app/west.yml
+
+# urob's zmk fork with mouse PR & many extra features
+    - name: zmk
+      remote: urob
+      revision: main
+      import: app/west.yml
 
 # Urob's zmk helpers that contain key position defines      
     - name: zmk-helpers
