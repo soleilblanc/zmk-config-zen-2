@@ -27,7 +27,6 @@
 #include "mouse.dtsi"                       // Urob's features
 // #include "combos.dtsi"
 // #include "urob_homerow_mods.dtsi"        // Urob's features
-
 // #include "kim_homerow_mods.dtsi"         // Kim includes
 
 / {
@@ -67,11 +66,11 @@ ZMK_HOLD_TAP(smart_num,
 ZMK_TAP_DANCE(num_dance,
     tapping-term-ms = <200>;
     bindings = <&num_word>, <&sl NUM>;  // reverse this for sticky-num on single tap
-) 
+) */
 &num_word {  // num-word, requires PR #1451
     layers = <NUM>;
-    continue-list = <BSPC DEL DOT COMMA PLUS MINUS STAR FSLH EQUAL CARET PRCNT>;
-}; */
+    continue-list = <BSPC DEL DOT COMMA PLUS MINUS STAR FSLH EQUAL CARET PRCNT UP DOWN LEFT RIGHT>;
+};
 
 // smart-mouse, requires PR #1366
 /*ZMK_TRI_STATE(smart_mouse,
@@ -89,14 +88,6 @@ ZMK_TAP_DANCE(num_dance,
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             bindings = <&mt LEFT_SHIFT CAPS>, <&kp LC(LA(LS(LGUI)))>;
-
-            tapping-term-ms = <250>;
-        };
-
-        td_FUN_Sp_Sp: td_layerFUN_space_space {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>;
-            bindings = <&lt FUN SPACE>, <&kp SPACE>;
 
             tapping-term-ms = <250>;
         };
@@ -149,10 +140,10 @@ ZMK_TAP_DANCE(num_dance,
             tapping-term-ms = <250>;
         };
 
-        td_SYM_SM: td_SYM_smartnumber {
+        td_SYM_SM: td_SYM_smart-number {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
-            bindings = <&mo SYM>, <&smart_num>;
+            bindings = <&mo SYM>, <&num_word>;
 
             tapping-term-ms = <250>;
         };
@@ -261,14 +252,14 @@ ZMK_TAP_DANCE(num_dance,
             bindings = <&sk LSHFT>, <&caps_word>;
             mods = <(MOD_LSFT)>;
         };
-
+/*
         smart_num: smart_number {
             #binding-cells = <0>;
             compatible = "zmk,behavior-num-word";
             layers = <NUM>;
             continue-list = <BSPC DEL DOT COMMA PLUS MINUS STAR FSLH EQUAL CARET PRCNT UP DOWN LEFT RIGHT>;
             ignore-numbers;
-        };
+        };  */
 
     };
 
