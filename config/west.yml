@@ -3,9 +3,10 @@ manifest:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
     - name: urob
-      url-base: https://github.com/urob      
+      url-base: https://github.com/urob
+    - name: dhruvinsh
+      url-base: https://github.com/dhruvinsh
   projects:
-
 # Standard, stable zmk repo
 #    - name: zmk
 #      remote: zmkfirmware
@@ -13,15 +14,21 @@ manifest:
 #      import: app/west.yml
 
 # urob's zmk fork with mouse PR & many extra features
-    - name: zmk
-      remote: urob
-      revision: main
-      import: app/west.yml
+#    - name: zmk
+#      remote: urob
+#      revision: main
+#      import: app/west.yml
 
 # Urob's zmk helpers that contain key position defines      
     - name: zmk-helpers
       remote: urob
       revision: v2 # this will eventually become main
+
+# Tri-state behavior to make cmd+tab switching key
+# Used to be a key feature in urob's fork
+    - name: zmk-tri-state
+      remote: dhruvinsh
+      revision: main
 
   self:
     path: config
