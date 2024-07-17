@@ -30,5 +30,10 @@ manifest:
       remote: dhruvinsh
       revision: main
 
+# urob's fork Num-Word behavior 
+    - name: zmk-num-word
+      remote: dhruvinsh
+      revision: main
+
   self:
     path: config
