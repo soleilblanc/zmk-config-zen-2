@@ -16,7 +16,7 @@
 
 // ZMK includes
 #include <behaviors.dtsi>
-#include <behaviors/num_word.dtsi>          // Urob's features
+// #include <behaviors/num_word.dtsi>          // Urob's feature from dhruvinsh
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/ext_power.h>
