@@ -1,0 +1,101 @@
+/*                KEY POSITIONS
+
+  ╭────────────────────────┬────────────────────────╮ ╭─────────────────────────┬─────────────────────────╮
+  │  0   1   2   3   4   5 │  6   7   8   9  10  11 │ │ LT5 LT4 LT3 LT2 LT1 LT0 │ RT0 RT1 RT2 RT3 RT4 RT5 │
+  │ 12  13  14  15  16  17 │ 18  19  20  21  22  23 │ │ LM5 LM4 LM3 LM2 LM1 LM0 │ RM0 RM1 RM2 RM3 RM4 RM5 │
+  │ 24  25  26  27  28  29 │ 30  31  32  33  34  35 │ │ LB5 LB4 LB3 LB2 LB1 LB0 │ RB0 RB1 RB2 RB3 RB4 RB5 │
+  ╰───────────╮ 36  37  38 │ 39  40  41 ╭───────────╯ ╰───────────╮ LH2 LH1 LH0 │ RH0 RH1 RH2 ╭───────────╯
+              ╰────────────┴────────────╯                         ╰─────────────┴─────────────╯             */
+
+// urob's settings
+// timeout-ms default: 50
+#define COMBO_TERM_FAST 18
+#define COMBO_TERM_SLOW 30
+// require-prior-idle-ms default: -1(disabled)
+#define COMBO_IDLE_FAST 150
+#define COMBO_IDLE_SLOW 50
+
+/* 
+// infused-kim's settings
+#define COMBO_TERM_FAST 35
+#define COMBO_TERM_SLOW 40
+#define COMBO_IDLE_FAST 100
+#define COMBO_IDLE_SLOW 100
+*/
+
+/*
+// make homerow combos tap-only (so HRMs can be chorded instantaneously)
+#define HRC_TAB    &hml         LS(LALT) TAB
+#define HRC_REPEAT &hml_repeat  LS(LCTRL) 0
+#define HRC_LPAR   &hmr_lpar_lt RS(LCTRL) 0
+#define HRC_RPAR   &hmr_rpar_gt RS(LALT) 0
+*/
+
+// left hand: horizontal
+ZMK_COMBO(tab,          &kp TAB,                LT3 LT2,    ALL,        COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(grave,        &kp GRAVE,              LM3 LM2,    ALL,        COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(tilde,        &kp TILDE,              LM4 LM3,    ALL,        COMBO_TERM_FAST, COMBO_IDLE_FAST)
+
+ZMK_COMBO(repeat,       &key_repeat,            LT2 LT1,    ALL,        COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(L_enter,      &kp RET,                LM2 LM1,    ALL,        COMBO_TERM_FAST, COMBO_IDLE_FAST)
+
+ZMK_COMBO(L_equal,      &kp EQUAL,              LB4 LB3,    ALL,        COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(L_minus,      &kp MINUS,              LB3 LB2,    ALL,        COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(L_under,      &kp UNDER,              LB2 LB1,    ALL,        COMBO_TERM_FAST, COMBO_IDLE_FAST)
+
+// left hand: vertical
+ZMK_COMBO(excl_qmark,   &mt EXCL QMARK,         LT4 LM4,    ALL,        COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+ZMK_COMBO(amps_at,      &mt AMPS AT,            LT3 LM3,    ALL,        COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+ZMK_COMBO(star_hash,    &mt STAR HASH,          LT2 LM2,    ALL,        COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+ZMK_COMBO(jpy_dllr,     &mt LA(Y) DLLR,         LT1 LM1,    ALL,        COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+ZMK_COMBO(caret_prcnt,  &mt CARET PRCNT,        LT0 LM0,    ALL,        COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+
+// ZMK_COMBO(,          &kp ,                   LM4 LB4,    ALL,        COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+// ZMK_COMBO(,          &kp ,                   LM3 LB3,    ALL,        COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+// ZMK_COMBO(,          &kp ,                   LM2 LB2,    ALL,        COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+ZMK_COMBO(sqt,          &kp SQT,                LM1 LB1,    ALL,        COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+ZMK_COMBO(semicolon,    &kp SEMICOLON,          LM0 LB0,    ALL,        COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+
+// left hand: diagonal
+ZMK_COMBO(L_fslh,       &kp FSLH,               LT2 LM3,    ALL,        COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+ZMK_COMBO(L_bslh,       &kp BSLH,               LT2 LM1,    ALL,        COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+ZMK_COMBO(lessthan,     &kp LT,                 LM2 LB3,    ALL,        COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+ZMK_COMBO(greaterthan,  &kp GT,                 LM2 LB1,    ALL,        COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+
+// right hand: horizontal
+ZMK_COMBO(jpy,          &kp LA(Y),              RT1 RT2,    ALL,        COMBO_TERM_FAST, COMBO_IDLE_FAST)
+
+ZMK_COMBO(R_enter,      &kp RET,                RM1 RM2,    ALL,        COMBO_TERM_FAST, COMBO_IDLE_FAST)
+// ZMK_COMBO(,          &kp ,                   RM2 RM3,    ALL,        COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(R_equal,      &kp EQUAL,              RM3 RM4,    ALL,        COMBO_TERM_FAST, COMBO_IDLE_FAST)
+
+ZMK_COMBO(R_under,      &kp UNDER,              RB1 RB2,    ALL,        COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(r_pipe,       &kp PIPE,               RB2 RB3,    ALL,        COMBO_TERM_FAST, COMBO_IDLE_FAST)
+// ZMK_COMBO(,          &kp ,                   RB3 RB4,    ALL,        COMBO_TERM_FAST, COMBO_IDLE_FAST)
+
+// right hand: vertical
+ZMK_COMBO(R_caret,      &kp CARET,              RT0 RM0,    ALL,        COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+ZMK_COMBO(R_plus,       &kp PLUS,               RT1 RM1,    ALL,        COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+ZMK_COMBO(R_star,       &kp STAR,               RT2 RM2,    ALL,        COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+ZMK_COMBO(R_amps,       &kp AMPS,               RT3 RM3,    ALL,        COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+
+ZMK_COMBO(R_minus,      &kp MINUS,              RM1 RB1,    ALL,        COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+ZMK_COMBO(R_fslh,       &kp FSLH,               RM2 RB2,    ALL,        COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+ZMK_COMBO(R_bslh,       &kp BSLH,               RM3 RB3,    ALL,        COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+
+// functional
+ZMK_COMBO(bkfw,         &mt LG(RBKT) LG(LBKT),  LT5 LT4,    ALL,        COMBO_TERM_FAST, COMBO_IDLE_FAST)
+
+ZMK_COMBO(dbrc,         &td_DBRC,               LT1 LT0,    ALL,        COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(dpar,         &td_DPAR,               LM1 LM0,    ALL,        COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(dbkt,         &td_DBKT,               LB1 LB0,    ALL,        COMBO_TERM_FAST, COMBO_IDLE_FAST)
+
+ZMK_COMBO(ltgt,         &m_LTGT,                LM3 LM1,    ALL,        COMBO_TERM_FAST, COMBO_IDLE_FAST)
+
+// Layer switch
+ZMK_COMBO(tgPlay,       &tog PLY,               LH1 LH0,    ALL,        COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+ZMK_COMBO(tgAdjust,     &tog ADJ,               RH0 RH1,    ALL,        COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+
+ZMK_COMBO(smart_mouse,  &smart_mouse,           LT3 LT1,    ALL,        COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(mouse,        &tog MOUSE,             LB3 LB1,    ALL,        COMBO_TERM_FAST, COMBO_IDLE_FAST)
+
