@@ -24,7 +24,7 @@
 #include <dt-bindings/zmk/rgb.h>
 #include "zmk-helpers/helper.h"             // Urob's features
 #include "zmk-helpers/key-labels/42.h"      // Urob's features
-#include "combos.dtsi"                      // separate personal combos
+// #include "combos.dtsi"                   // separate personal combos
 #include "mouse.dtsi"                       // Urob's features
 
 / {
@@ -311,7 +311,6 @@ ZMK_TAP_DANCE(num_dance,
         };
     };
 
-/*
     combos {
         compatible = "zmk,combos";
     // left hand: horizontal
@@ -567,7 +566,6 @@ ZMK_TAP_DANCE(num_dance,
             key-positions = <26 28>;
         };
     };
-*/
 
     macros {
         m_DPAR: m_Double_PAR {
