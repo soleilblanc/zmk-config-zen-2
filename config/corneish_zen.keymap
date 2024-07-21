@@ -101,11 +101,11 @@ ZMK_TAP_DANCE(num_dance,
     ignored-layers = <MOUSE>;
 ) */
 
-// #define COMBO_TERM_FAST 18
-#define COMBO_TERM_SLOW 40
+#define COMBO_TERM_FAST 30
+#define COMBO_TERM_SLOW 50
 
-// #define COMBO_IDLE_FAST 150
-// #define COMBO_IDLE_SLOW 100
+#define COMBO_IDLE_FAST 150
+#define COMBO_IDLE_SLOW 50
 
 
 / {
@@ -419,6 +419,7 @@ ZMK_TAP_DANCE(num_dance,
             bindings = <&kp BSLH>;
             key-positions = <3 16>;
             timeout-ms = <COMBO_TERM_SLOW>;
+            require-prior-idle-ms = <COMBO_IDLE_SLOW>;
         };
 
         // ZMK_COMBO(lessthan, &kp LT, LM2 LB3, ALL, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
@@ -426,6 +427,7 @@ ZMK_TAP_DANCE(num_dance,
             bindings = <&kp LT>;
             key-positions = <15 26>;
             timeout-ms = <COMBO_TERM_SLOW>;
+            require-prior-idle-ms = <COMBO_IDLE_SLOW>;
         };
 
         // ZMK_COMBO(greaterthan, &kp GT, LM2 LB1, ALL, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
@@ -433,6 +435,7 @@ ZMK_TAP_DANCE(num_dance,
             bindings = <&kp GT>;
             key-positions = <15 28>;
             timeout-ms = <COMBO_TERM_SLOW>;
+            require-prior-idle-ms = <COMBO_IDLE_SLOW>;
         };
 
     // right hand: horizontal
