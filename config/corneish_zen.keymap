@@ -24,8 +24,9 @@
 #include <dt-bindings/zmk/rgb.h>
 #include "zmk-helpers/helper.h"             // Urob's features
 #include "zmk-helpers/key-labels/42.h"      // Urob's features
-// #include "combos.dtsi"                   // separate personal combos
+// #include "combos.dtsi"                      // separate personal combos
 #include "mouse.dtsi"                       // Urob's features
+#include <dt-bindings/zmk/mouse.h>
 
 / {
     chosen {
@@ -100,17 +101,17 @@ ZMK_TAP_DANCE(num_dance,
     ignored-layers = <MOUSE>;
 ) */
 
-#define COMBO_TERM_FAST 18
+// #define COMBO_TERM_FAST 18
 #define COMBO_TERM_SLOW 40
 
-#define COMBO_IDLE_FAST 150
-#define COMBO_IDLE_SLOW 100
+// #define COMBO_IDLE_FAST 150
+// #define COMBO_IDLE_SLOW 100
 
 
 / {
     behaviors {
-    // tap-dances: layer
-        td_NAV_bspc: td_NAV_backspace_NUMword {
+    // tap-dances, layer
+        td_NAV_bspc: td_NAV_bspc_nWord {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             bindings = <&blt NAV BSPC>, <&num_word>;
@@ -118,7 +119,7 @@ ZMK_TAP_DANCE(num_dance,
             tapping-term-ms = <220>;
         };
 
-        td_NUM_ret: td_NUM_enter_NAVword {
+        td_NUM_ret: td_NUM_enter_nvWord {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             bindings = <&blt NUM RET>, <&nav_word>;
@@ -150,7 +151,7 @@ ZMK_TAP_DANCE(num_dance,
             tapping-term-ms = <250>;
         };
 
-    // tap-dances: arrows
+    // tap-dances, arrows
         td_up: td_up {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
@@ -183,7 +184,7 @@ ZMK_TAP_DANCE(num_dance,
             tapping-term-ms = <250>;
         };
 
-    // tap-dances: double symbols
+    // tap-dances, double symbols
         td_DPAR: td_Doubel_PAR {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
@@ -202,9 +203,9 @@ ZMK_TAP_DANCE(num_dance,
             bindings = <&mt RBRC LBRC>, <&m_DBRC>;
         };
 
-    // hold-tap: new beheviors
+    // hold-tap, new beheviors
         //  hold to layer, quickly tap-tap holding to output key
-        qlt: quick_layer_tap {
+        qlt: quick_lt {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             bindings = <&mo>, <&kp>;
@@ -214,18 +215,16 @@ ZMK_TAP_DANCE(num_dance,
             quick-tap-ms = <200>;
         };
 
-        //  hold to layer, quickly tap-tap holding to output key
-        blt: blanced_layer_tap {
+        //  change flavor to balanced
+        blt: blance_lt {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             bindings = <&mo>, <&kp>;
 
             flavor = "balanced";
-            // tapping-term-ms = <220>;
-            // quick-tap-ms = <200>;
         };
 
-    // hold-tap: infused-kim's Homerow-Mod
+    // hold-tap, infused-kim's Homerow-Mod
         hm_l: homerow_mod_left {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -631,10 +630,10 @@ ZMK_TAP_DANCE(num_dance,
         number_layer {
             display-name = "NUMBER";
             bindings = <
-&trans  &none           &kp N7         &kp N8         &kp N9           &trans    &kp PLUS   &kp HOME   &td_up    &kp END    &kp PG_UP  &trans
-&trans  &hm_l LCTRL N0  &hm_l LALT N4  &hm_l LGUI N5  &hm_lq LSHFT N6  &trans    &kp PIPE   &td_left   &td_down  &td_right  &kp PG_DN  &kp COLON
-&trans  &none           &kp N1         &kp N2         &kp N3           &trans    &kp UNDER  &kp TILDE  &kp LT    &kp GT     &kp QMARK  &trans
-                                       &trans         &trans           &trans    &trans     &trans     &trans
+&trans  &none           &kp N7         &kp N8         &kp N9           &trans    &none     &msc SCRL_LEFT  &msc MOVE_UP    &msc SCRL_RIGHT  &msc SCRL_DOWN  &none
+&trans  &hm_l LCTRL N0  &hm_l LALT N4  &hm_l LGUI N5  &hm_lq LSHFT N6  &trans    &mkp MB4  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &mmv SCRL_UP    &none
+&trans  &none           &kp N1         &kp N2         &kp N3           &trans    &mkp MB5  &mkp LCLK       &mkp MCLK       &mkp RCLK        &none           &trans
+                                       &trans         &trans           &trans    &trans    &trans     &trans
             >;
         };
 
@@ -642,7 +641,7 @@ ZMK_TAP_DANCE(num_dance,
             display-name = "FUNC";
             bindings = <
 &trans  &kp LC(LA(LS(LG(N1))))          &kp LC(LA(LS(LG(N2))))         &kp LC(LA(LS(LG(N3))))  &kp LS(LG(N2))           &kp LS(LG(T))    &kp LS(LG(N4))  &kp F7     &kp F8  &kp F9  &kp F12  &none
-&trans  &hm_l LCTRL LC(LA(LS(LG(O))))   &hm_l LALT LC(LA(LS(LG(P))))   &hm_l LGUI 0            &hm_lq LSHFT LG(J)       &kp LG(H)        &kp LS(LG(N5))  &kp F4     &kp F5  &kp F6  &kp F11  &sk RCTRL
+&trans  &hm_l LCTRL LC(LA(LS(LG(O))))   &hm_l LALT LC(LA(LS(LG(P))))   &hm_l LGUI D            &hm_lq LSHFT LG(J)       &kp LG(H)        &kp LS(LG(N5))  &kp F4     &kp F5  &kp F6  &kp F11  &sk RCTRL
 &trans  &kp LG(K)                       &kp LA(LS(LG(V)))              &kp LA(LG(C))           &kp LA(LG(V))            &kp LA(LG(H))    &none           &kp F1     &kp F2  &kp F3  &kp F10  &trans
                                                                        &trans                  &kp GLOBE                &trans           &trans          &kp GLOBE  &trans
             >;
