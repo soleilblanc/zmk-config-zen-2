@@ -110,6 +110,27 @@ ZMK_TAP_DANCE(num_dance,
 
 / {
     behaviors {
+    // hold-tap, new beheviors
+        //  change flavor to balanced
+        blt: blt {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            bindings = <&mo>, <&kp>;
+
+            flavor = "balanced";
+        };
+
+        //  hold to layer, quickly tap-tap holding to output key
+        qlt: qlt {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            bindings = <&mo>, <&kp>;
+
+            flavor = "balanced";
+            tapping-term-ms = <220>;
+            quick-tap-ms = <200>;
+        };
+
     // tap-dances, layer
         td_NAV_bspc: td_NAV_bspc_nWord {
             compatible = "zmk,behavior-tap-dance";
@@ -201,26 +222,6 @@ ZMK_TAP_DANCE(num_dance,
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             bindings = <&mt RBRC LBRC>, <&m_DBRC>;
-        };
-
-    // hold-tap, new beheviors
-        //  change flavor to balanced
-        // blt: blance_lt {
-        //    compatible = "zmk,behavior-hold-tap";
-        //    #binding-cells = <2>;
-        //    bindings = <&mo>, <&kp>;
-        //    flavor = "balanced";
-        // };
-
-        //  hold to layer, quickly tap-tap holding to output key
-        qlt: quick_lt {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            bindings = <&mo>, <&kp>;
-
-            flavor = "balanced";
-            tapping-term-ms = <220>;
-            quick-tap-ms = <200>;
         };
 
     // hold-tap, infused-kim's Homerow-Mod
