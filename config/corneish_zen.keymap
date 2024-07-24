@@ -6,13 +6,15 @@
 
 // Define layer numbers
 #define DEF 0
-#define NAV 1
-#define NUM 2
-#define FUN 3
-#define PLY 4
-#define PAD 5
-#define MOUSE 6
-#define ADJ 7
+#define COL 1
+#define NAV 2
+#define NUM 3
+#define FUN 4
+#define GAM 5
+#define MED 6
+#define PAD 7
+#define MOUSE 8
+#define ADJ 9
 
 // ZMK includes
 #include <behaviors.dtsi>
@@ -107,6 +109,8 @@ ZMK_TAP_DANCE(num_dance,
 #define COMBO_IDLE_FAST 150
 #define COMBO_IDLE_SLOW 50
 
+// #define HYP(keycode) &kp LC(LA(LS(LG(keycode))))
+// #define MEH(keycode) &kp LC(LA(LS(keycode)))
 
 / {
     behaviors {
@@ -552,16 +556,28 @@ ZMK_TAP_DANCE(num_dance,
         };
 
     // Layer switch
-        // ZMK_COMBO(tgPlay, &tog PLY, LH1 LH0, ALL, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
-        cb_tgPlay {
-            bindings = <&tog PLY>;
-            key-positions = <37 38>;
+        // ZMK_COMBO(tgGame, &tog GAM, LT1 LM0, ALL, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+        cb_tgGame {
+            bindings = <&tog GAM>;
+            key-positions = <4 17>;
         };
 
-        // ZMK_COMBO(tgAdjust, &tog ADJ, RH0 RH1, ALL, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+        // ZMK_COMBO(tgColemak, &tog COL, RM1 RB0, ALL, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+        cb_tgCole {
+            bindings = <&tog COL>;
+            key-positions = <16 29>;
+        };
+
+        // ZMK_COMBO(tgMedia, &tog MED, LT5 LT4, ALL, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+        cb_tgMedia {
+            bindings = <&tog MED>;
+            key-positions = <0 1>;
+        };
+
+        // ZMK_COMBO(tgAdjust, &tog ADJ, RT4 RT5, ALL, COMBO_TERM_FAST, COMBO_IDLE_FAST)
         cb_tgAdj {
             bindings = <&tog ADJ>;
-            key-positions = <39 40>;
+            key-positions = <10 11>;
         };
 
         // ZMK_COMBO(smart_mouse, &smart_mouse, LT3 LT1, ALL, COMBO_TERM_FAST, COMBO_IDLE_FAST)
@@ -629,10 +645,20 @@ ZMK_TAP_DANCE(num_dance,
         default_layer {
             display-name = "QWERTY";
             bindings = <
-&kp TAB                     &kp Q          &kp W         &hm_l LC(LA(LS(LGUI))) E  &kp R              &kp T           &kp Y           &kp U               &hm_r RC(RA(RS(RGUI))) I  &kp O         &kp P            &mt BSLH MINUS
-&mt LC(LA(LS(LGUI))) GRAVE  &hm_l LCTRL A  &hm_l LALT S  &hm_l LGUI D              &hm_lq LSHFT F     &kp G           &kp H           &hm_rq RSHFT J      &hm_r RGUI K              &hm_r RALT L  &hm_r RCTRL SQT  &kp SEMI
-&mt LSHFT CAPS              &kp Z          &kp X         &kp C                     &kp V              &kp B           &kp N           &kp M               &kp COMMA                 &kp DOT       &kp FSLH         &kp GLOBE
+&kp TAB                     &kp Q          &kp W         &hm_l LC(LA(LS(LGUI))) E  &kp R              &kp T           &kp Y           &kp U               &hm_r RC(RA(RS(RGUI))) I   &kp O         &kp P            &mt BSLH MINUS
+&mt LC(LA(LS(LGUI))) GRAVE  &hm_l LCTRL A  &hm_l LALT S  &hm_l LGUI D              &hm_lq LSHFT F     &kp G           &kp H           &hm_rq RSHFT J      &hm_r RGUI K               &hm_r RALT L  &hm_r RCTRL SQT  &mt LC(LA(LSHFT)) SEMI
+&mt LSHFT CAPS              &kp Z          &kp X         &hm_l LC(LA(LSHFT)) C     &kp V              &kp B           &kp N           &kp M               &hm_r LC(LA(LSHFT)) COMMA  &kp DOT       &kp FSLH         &kp INS
                                                          &mt LGUI ESC              &blt NAV BSPC      &qlt FUN SPACE  &qlt FUN SPACE  &blt NUM RET        &smart_shft
+            >;
+        };
+
+        colemak_layer {
+            display-name = "ARSTGM";
+            bindings = <
+&trans  &trans  &trans        &hm_l LC(LA(LS(LGUI))) F  &kp P           &kp B     &kp J   &kp L           &hm_r RC(RA(RS(RGUI))) U  &kp Y         &kp SQT        &trans
+&trans  &trans  &hm_l LALT R  &hm_l LGUI S              &hm_lq LSHFT T  &trans    &kp M   &hm_rq RSHFT N  &hm_r RGUI E              &hm_r RALT I  &hm_r RCTRL O  &trans
+&trans  &trans  &trans        &trans                    &kp D           &kp V     &kp K   &kp H           &trans                    &trans        &trans         &trans
+                              &trans                    &trans          &trans    &trans  &trans          &trans
             >;
         };
 
@@ -640,7 +666,7 @@ ZMK_TAP_DANCE(num_dance,
             display-name = "NAVI";
             bindings = <
 &trans  &kp PG_UP  &kp HOME  &td_up    &kp END    &kp PRCNT    &kp CARET  &kp N7           &kp N8         &kp N9         &kp N0            &kp BSLH
-&trans  &kp PG_DN  &td_left  &td_down  &td_right  &kp RET      &kp PLUS   &hm_rq RSHFT N4  &hm_r RGUI N5  &hm_r RALT N6  &hm_r RCTRL STAR  &kp EQUAL
+&trans  &kp PG_DN  &td_left  &td_down  &td_right  &kp RET      &kp PLUS   &hm_rq RSHFT N4  &hm_r RGUI N5  &hm_r RALT N6  &hm_r RCTRL STAR  &mt LC(LA(LSHFT)) EQUAL
 &trans  &sk LCTRL  &sk LALT  &sk LGUI  &sk LSHFT  &kp DEL      &kp MINUS  &kp N1           &kp N2         &kp N3         &kp FSLH          &trans
                             &trans     &trans     &trans       &trans     &kp KP_DOT       &trans
             >;
@@ -650,7 +676,7 @@ ZMK_TAP_DANCE(num_dance,
             display-name = "NUMBER";
             bindings = <
 &trans  &none           &kp N7         &kp N8         &kp N9           &none     &none     &msc SCRL_LEFT  &mmv MOVE_UP    &msc SCRL_RIGHT  &msc SCRL_DOWN  &none
-&trans  &hm_l LCTRL N0  &hm_l LALT N4  &hm_l LGUI N5  &hm_lq LSHFT N6  &trans    &mkp MB4  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &msc SCRL_UP    &none
+&trans  &hm_l LCTRL N0  &hm_l LALT N4  &hm_l LGUI N5  &hm_lq LSHFT N6  &trans    &mkp MB4  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &msc SCRL_UP    &trans
 &trans  &none           &kp N1         &kp N2         &kp N3           &trans    &mkp MB5  &mkp LCLK       &mkp MCLK       &mkp RCLK        &none           &trans
                                        &trans         &trans           &trans    &trans    &trans     &trans
             >;
@@ -659,20 +685,30 @@ ZMK_TAP_DANCE(num_dance,
         function_layer {
             display-name = "FUNC";
             bindings = <
-&trans  &kp LC(LA(LS(LG(N1))))          &kp LC(LA(LS(LG(N2))))         &kp LC(LA(LS(LG(N3))))  &kp LS(LG(N2))           &kp LS(LG(T))    &kp LS(LG(N4))  &kp F7     &kp F8  &kp F9  &kp F12  &none
-&trans  &hm_l LCTRL LC(LA(LS(LG(O))))   &hm_l LALT LC(LA(LS(LG(P))))   &hm_l LGUI D            &hm_lq LSHFT LG(J)       &kp LG(H)        &kp LS(LG(N5))  &kp F4     &kp F5  &kp F6  &kp F11  &sk RCTRL
+&trans  &kp LC(LA(LS(LG(N1))))          &kp LC(LA(LS(LG(N2))))         &kp LC(LA(LS(LG(N3))))  &kp LC(LA(LS(LG(N4))))   &kp LS(LG(T))    &kp LS(LG(N4))  &kp F7     &kp F8  &kp F9  &kp F12  &none
+&trans  &hm_l LCTRL LC(LA(LS(LG(O))))   &hm_l LALT LC(LA(LS(LG(P))))   &hm_l LGUI LS(LG(N2))   &hm_lq LSHFT LG(J)       &kp LG(H)        &kp LS(LG(N5))  &kp F4     &kp F5  &kp F6  &kp F11  &sk RCTRL
 &trans  &kp LG(K)                       &kp LA(LS(LG(V)))              &kp LA(LG(C))           &kp LA(LG(V))            &kp LA(LG(H))    &none           &kp F1     &kp F2  &kp F3  &kp F10  &trans
-                                                                       &trans                  &kp GLOBE                &trans           &trans          &kp GLOBE  &trans
+                                                                       &trans                  &kp INS                  &trans           &trans          &kp INS    &trans
             >;
         };
 
-        player_layer {
-            display-name = "PLAY";
+        gaming_layer {
+            display-name = "GAMING";
             bindings = <
-&kp C_VOL_UP  &kp E      &kp J              &kp UP    &kp L                &kp C        &none  &none  &none   &none  &tog PLY  &none
-&kp C_VOL_DN  &kp R      &mt LA(LEFT) LEFT  &kp DOWN  &mt LA(RIGHT) RIGHT  &kp F        &none  &none  &none   &none  &none     &none
-&kp C_MUTE    &kp COMMA  &kp DOT            &kp LT    &kp GT               &kp FSLH     &none  &none  &none   &none  &none     &none
-                                            &trans    &mo PAD              &kp SPACE    &none  &none  &trans
+&trans  &kp N3  &kp Q  &kp W   &kp E     &kp N6    &kp Y   &kp U           &hm_r RC(RA(RS(RGUI))) I  &kp O         &kp P            &mt BSLH MINUS
+&trans  &kp N2  &kp A  &kp S   &kp D     &kp N5    &kp H   &hm_rq RSHFT J  &hm_r RGUI K              &hm_r RALT L  &hm_r RCTRL SQT  &mt LC(LA(LSHFT)) SEMI
+&trans  &kp N1  &kp Z  &kp X   &kp C     &kp N4    &kp N   &kp M           &kp COMMA                 &kp DOT       &kp FSLH         &kp INS
+                       &trans  &kp LALT  &trans    &trans  &blt NUM RET    &trans
+            >;
+        };
+
+        media_layer {
+            display-name = "MEDIA";
+            bindings = <
+&kp C_VOL_UP  &kp E      &kp J              &kp UP    &kp L                &kp C        &none  &kp C_PREV  &kp C_PP   &kp C_NEXT  &kp C_VOL_UP  &none
+&kp C_VOL_DN  &kp R      &mt LA(LEFT) LEFT  &kp DOWN  &mt LA(RIGHT) RIGHT  &kp F        &none  &none       &none      &none       &kp C_VOL_DN  &none
+&kp C_MUTE    &kp COMMA  &kp DOT            &kp LT    &kp GT               &kp FSLH     &none  &none       &none      &none       &kp C_MUTE    &none
+                                            &trans    &mo PAD              &kp SPACE    &none  &none       &trans
             >;
         };
 
@@ -699,10 +735,10 @@ ZMK_TAP_DANCE(num_dance,
         adjust_layer {
             display-name = "ADJUST";
             bindings = <
-&tog ADJ  &bt BT_SEL 0    &bt BT_SEL 1       &bt BT_SEL 2     &bt BT_SEL 3     &bt BT_SEL 4    &out OUT_BLE  &out OUT_USB     &none            &none            &none            &tog ADJ
-&none     &bt BT_CLR      &ext_power EP_ON   &rgb_ug RGB_ON   &rgb_ug RGB_EFF  &bootloader     &bootloader   &rgb_ug RGB_SPI  &rgb_ug RGB_BRI  &rgb_ug RGB_SAI  &rgb_ug RGB_HUI  &none
-&none     &bt BT_CLR_ALL  &ext_power EP_OFF  &rgb_ug RGB_OFF  &rgb_ug RGB_EFR  &sys_reset      &sys_reset    &rgb_ug RGB_SPD  &rgb_ug RGB_BRD  &rgb_ug RGB_SAD  &rgb_ug RGB_HUD  &none
-                                             &none            &none            &none           &none         &none            &none
+&none  &bt BT_SEL 0    &bt BT_SEL 1       &bt BT_SEL 2     &bt BT_SEL 3     &bt BT_SEL 4    &out OUT_BLE  &out OUT_USB     &none            &none            &none            &none
+&none  &bt BT_CLR      &ext_power EP_ON   &rgb_ug RGB_ON   &rgb_ug RGB_EFF  &bootloader     &bootloader   &rgb_ug RGB_SPI  &rgb_ug RGB_BRI  &rgb_ug RGB_SAI  &rgb_ug RGB_HUI  &none
+&none  &bt BT_CLR_ALL  &ext_power EP_OFF  &rgb_ug RGB_OFF  &rgb_ug RGB_EFR  &sys_reset      &sys_reset    &rgb_ug RGB_SPD  &rgb_ug RGB_BRD  &rgb_ug RGB_SAD  &rgb_ug RGB_HUD  &none
+                                          &none            &none            &none           &none         &none            &none
             >;
         };
     };
