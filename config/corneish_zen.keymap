@@ -694,7 +694,7 @@
 
         // ZMK_COMBO(smart_media, &smart_media, LM3 LM1, ALL, COMBO_TERM_FAST, COMBO_IDLE_FAST)
         cb_smart_media {
-            bindings = <&hml_sMED LA(LSHFT)>;
+            bindings = <&hml_sMED LA(LSHFT) 0>;
             key-positions = <14 16>;
         };
 
