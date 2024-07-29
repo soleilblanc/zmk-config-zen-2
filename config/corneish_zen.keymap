@@ -768,7 +768,7 @@
             compatible = "zmk,behavior-macro-one-param";
             wait-ms = <0>;
             #binding-cells = <1>;
-            bindings = <&macro_tap_time 200>
+            bindings = <&macro_tap_time 300>
                      , <&macro_press &kp INS>
                      , <&macro_tap_time 10>
                      , <&macro_param_1to1>
@@ -785,10 +785,12 @@
             wait-ms = <0>;
             #binding-cells = <1>;
             bindings = <&macro_tap_time 300>
-                     , <&kp INS>
+                     , <&macro_press &kp INS>
                      , <&macro_tap_time 10>
                      , <&macro_param_1to1>
-                     , <&kp MACRO_PLACEHOLDER>;
+                     , <&kp MACRO_PLACEHOLDER>
+                     , <&macro_pause_for_release>
+                     , <&macro_release &kp INS>;
         };
 
         /*
