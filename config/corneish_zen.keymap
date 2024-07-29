@@ -795,7 +795,7 @@
             bindings = <&sk INS>
                      , <&macro_tap_time 10>
                      , <&macro_param_1to1>
-                     , <&kp MACRO_PLACEHOLDER>
+                     , <&kp MACRO_PLACEHOLDER>;
         };
 
         /*
