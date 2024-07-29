@@ -45,8 +45,8 @@
 // ───────────────────────────────────────────────── Global settings ─────────────────────────────────────────────────
     #define QUICK_TAP_MS 175
 
-    #define COMBO_TERM_FAST 35
-    #define COMBO_TERM_SLOW 50
+    #define COMBO_TERM_FAST 18
+    #define COMBO_TERM_SLOW 30
 
     #define COMBO_IDLE_FAST 150
     #define COMBO_IDLE_SLOW 50
@@ -481,24 +481,32 @@
         cb_excl_qmark {
             bindings = <&mt EXCL QMARK>;
             key-positions = <1 13>;
+            timeout-ms = <COMBO_TERM_SLOW>;
+            require-prior-idle-ms = <COMBO_IDLE_SLOW>;
         };
 
         //ZMK_COMBO(amps_at, &mt AMPS AT, LT3 LM3, ALL, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
         cb_amps_at {
             bindings = <&mt AMPS AT>;
             key-positions = <2 14>;
+            timeout-ms = <COMBO_TERM_SLOW>;
+            require-prior-idle-ms = <COMBO_IDLE_SLOW>;
         };
 
         //ZMK_COMBO(star_hash, &mt STAR HASH, LT2 LM2, ALL, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
         cb_star_hash {
             bindings = <&mt STAR HASH>;
             key-positions = <3 15>;
+            timeout-ms = <COMBO_TERM_SLOW>;
+            require-prior-idle-ms = <COMBO_IDLE_SLOW>;
         };
 
         //ZMK_COMBO(JPY_dllr, &mt LA(Y) DLLR, LT1 LM1, ALL, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
         cb_JPY_dollar {
             bindings = <&mt LA(Y) DLLR>;
             key-positions = <4 16>;
+            timeout-ms = <COMBO_TERM_SLOW>;
+            require-prior-idle-ms = <COMBO_IDLE_SLOW>;
         };
 
         //ZMK_COMBO(caret_prcnt, &mt CARET PRCNT, LT0 LM0, ALL, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
@@ -511,6 +519,8 @@
         cb_semi_comma {
             bindings = <&mt SEMICOLON COMMA>;
             key-positions = <14 26>;
+            timeout-ms = <COMBO_TERM_SLOW>;
+            require-prior-idle-ms = <COMBO_IDLE_SLOW>;
         };
 
         //ZMK_COMBO(colon_dot, &mt COLON DOT, LM2 LB2, ALL, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
@@ -523,12 +533,16 @@
         cb_dqt_sqt {
             bindings = <&mt DQT SQT>;
             key-positions = <16 28>;
+            timeout-ms = <COMBO_TERM_SLOW>;
+            require-prior-idle-ms = <COMBO_IDLE_SLOW>;
         };
 
         //ZMK_COMBO(L_pipe, &kp PIPE, LM0 LB0, ALL, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
         cb_L_pipe {
             bindings = <&kp PIPE>;
             key-positions = <17 29>;
+            timeout-ms = <COMBO_TERM_SLOW>;
+            require-prior-idle-ms = <COMBO_IDLE_SLOW>;
         };
 
     // left hand: diagonal
@@ -577,8 +591,8 @@
         cb_R_equal {
             bindings = <&hmr RA(RCTRL) EQUAL>;
             key-positions = <21 22>;
-            // timeout-ms = <COMBO_TERM_FAST>;
-            // require-prior-idle-ms = <COMBO_IDLE_FAST>;
+            timeout-ms = <COMBO_TERM_FAST>;
+            require-prior-idle-ms = <COMBO_IDLE_FAST>;
         };
 
         // ZMK_COMBO(R_under, &kp UNDER, RB1 RB2, ALL, COMBO_TERM_FAST, COMBO_IDLE_FAST)
@@ -602,42 +616,56 @@
         cb_R_caret {
             bindings = <&kp CARET>;
             key-positions = <6 18>;
+            timeout-ms = <COMBO_TERM_SLOW>;
+            require-prior-idle-ms = <COMBO_IDLE_SLOW>;
         };
 
         // ZMK_COMBO(R_plus, &kp PLUS, RT1 RM1, ALL, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
         cb_R_plus {
             bindings = <&kp PLUS>;
             key-positions = <7 19>;
+            timeout-ms = <COMBO_TERM_SLOW>;
+            require-prior-idle-ms = <COMBO_IDLE_SLOW>;
         };
 
         // ZMK_COMBO(R_star, &kp STAR, RT2 RM2, ALL, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
         cb_R_star {
             bindings = <&kp STAR>;
             key-positions = <8 20>;
+            timeout-ms = <COMBO_TERM_SLOW>;
+            require-prior-idle-ms = <COMBO_IDLE_SLOW>;
         };
 
         // ZMK_COMBO(R_amps, &kp AMPS, RT3 RM3, ALL, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
         cb_R_amps {
             bindings = <&kp AMPS>;
             key-positions = <9 21>;
+            timeout-ms = <COMBO_TERM_SLOW>;
+            require-prior-idle-ms = <COMBO_IDLE_SLOW>;
         };
 
         // ZMK_COMBO(R_minus, &kp MINUS, RM1 RB1, ALL, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
         cb_R_minus {
             bindings = <&kp MINUS>;
             key-positions = <19 31>;
+            timeout-ms = <COMBO_TERM_SLOW>;
+            require-prior-idle-ms = <COMBO_IDLE_SLOW>;
         };
 
         // ZMK_COMBO(R_fslh, &kp FSLH, RM2 RB2, ALL, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
         cb_R_fslh {
             bindings = <&kp FSLH>;
             key-positions = <20 32>;
+            timeout-ms = <COMBO_TERM_SLOW>;
+            require-prior-idle-ms = <COMBO_IDLE_SLOW>;
         };
 
         // ZMK_COMBO(R_bslh, &kp BSLH, RM3 RB3, ALL, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
         cb_R_bslh {
             bindings = <&kp BSLH>;
             key-positions = <21 33>;
+            timeout-ms = <COMBO_TERM_SLOW>;
+            require-prior-idle-ms = <COMBO_IDLE_SLOW>;
         };
 
     // functional
@@ -645,30 +673,40 @@
         cb_BackForward {
             bindings = <&mt LG(RBKT) LG(LBKT)>;
             key-positions = <1 2>;
+            timeout-ms = <COMBO_TERM_FAST>;
+            require-prior-idle-ms = <COMBO_IDLE_FAST>;
         };
 
         // ZMK_COMBO(dbrc, &td_DBRC, LT1 LT0, ALL, COMBO_TERM_FAST, COMBO_IDLE_FAST)
         cb_dBRC {
             bindings = <&td_DBRC>;
             key-positions = <4 5>;
+            timeout-ms = <COMBO_TERM_FAST>;
+            require-prior-idle-ms = <COMBO_IDLE_FAST>;
         };
 
         // ZMK_COMBO(dpar, &td_DPAR, LM1 LM0, ALL, COMBO_TERM_FAST, COMBO_IDLE_FAST)
         cb_dPAR {
             bindings = <&td_DPAR>;
             key-positions = <16 17>;
+            timeout-ms = <COMBO_TERM_FAST>;
+            require-prior-idle-ms = <COMBO_IDLE_FAST>;
         };
 
         // ZMK_COMBO(LTGT, &LTGT, RM1 RB0, ALL, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
         cb_LTGT {
             bindings = <&td_LTGT>;
             key-positions = <16 29>;
+            timeout-ms = <COMBO_TERM_SLOW>;
+            require-prior-idle-ms = <COMBO_IDLE_SLOW>;
         };
 
         // ZMK_COMBO(dbkt, &td_DBKT, LB1 LB0, ALL, COMBO_TERM_FAST, COMBO_IDLE_FAST)
         cb_dBKT {
             bindings = <&td_DBKT>;
             key-positions = <28 29>;
+            timeout-ms = <COMBO_TERM_FAST>;
+            require-prior-idle-ms = <COMBO_IDLE_FAST>;
         };
 
     // Layer switch
@@ -774,7 +812,7 @@
             tap-ms = <1>;
             #binding-cells = <1>;
             bindings = <&macro_press &kp INS>
-                     , <&macro_wait_time 200>
+                     , <&macro_wait_time 300>
                      , <&macro_param_1to1>
                      , <&macro_press &kp MACRO_PLACEHOLDER>
                      , <&macro_pause_for_release>
@@ -791,7 +829,8 @@
             bindings = <&macro_press &kp INS>
                      , <&macro_wait_time 200>
                      , <&macro_param_1to1>
-                     , <&kp MACRO_PLACEHOLDER>;
+                     , <&kp MACRO_PLACEHOLDER>
+                     , <&macro_release &kp INS>;
         };
 
         /*
